@@ -11,6 +11,8 @@ spring:
     host: 127.0.0.1
     port: 6379
     password: 123456
+    #密码明文配置,一旦代码泄漏,数据不安全
+
     jedis:
       pool:
         max-active: 8
