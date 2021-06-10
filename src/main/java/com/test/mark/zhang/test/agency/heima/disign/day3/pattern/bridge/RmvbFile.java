@@ -8,6 +8,7 @@ package com.test.mark.zhang.test.agency.heima.disign.day3.pattern.bridge;
  */
 public class RmvbFile implements VideoFile {
 
+    @Override
     public void decode(String fileName) {
         System.out.println("rmvb视频文件 ：" + fileName);
     }

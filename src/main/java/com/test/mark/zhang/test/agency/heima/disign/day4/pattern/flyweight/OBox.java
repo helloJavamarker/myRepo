@@ -8,6 +8,7 @@ package com.test.mark.zhang.test.agency.heima.disign.day4.pattern.flyweight;
  */
 public class OBox extends AbstractBox {
 
+    @Override
     public String getShape() {
         return "O";
     }

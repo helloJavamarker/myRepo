@@ -11,6 +11,7 @@ public class Client {
         //点一份炒饭
         FastFood food = new FriedRice();
 
+        // 这里直接调用food的price属性时,显示的是friedRice的价钱
         System.out.println(food.getDesc() + "  " + food.cost() + "元");
 
         System.out.println("===============");

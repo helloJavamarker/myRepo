@@ -12,6 +12,7 @@ public class Bacon extends Garnish {
         super(fastFood,2,"培根");
     }
 
+    @Override
     public float cost() {
         //计算价格
         return getPrice() + getFastFood().cost();

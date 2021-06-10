@@ -12,6 +12,7 @@ public class FriedNoodles extends FastFood {
         super(12,"炒面");
     }
 
+    @Override
     public float cost() {
         return getPrice();
     }

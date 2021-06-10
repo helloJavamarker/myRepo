@@ -36,6 +36,7 @@ public class ProxyFactory {
 
                         返回值： 方法的返回值。
                      */
+                    @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         //System.out.println("invoke方法执行了");
                         System.out.println("代售点收取一定的服务费用(jdk动态代理)");

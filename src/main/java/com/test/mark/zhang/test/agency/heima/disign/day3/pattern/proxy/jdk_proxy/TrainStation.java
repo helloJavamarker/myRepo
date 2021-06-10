@@ -8,6 +8,7 @@ package com.test.mark.zhang.test.agency.heima.disign.day3.pattern.proxy.jdk_prox
  */
 public class TrainStation implements SellTickets {
 
+    @Override
     public void sell() {
         System.out.println("火车站卖票");
     }

@@ -11,10 +11,12 @@ public class Lift implements ILift {
     //声明一个记录当前电梯的状态
     private int state;
 
+    @Override
     public void setState(int state) {
         this.state = state;
     }
 
+    @Override
     public void open() {
         switch (state) { //当前电梯状态
             case OPENING_STATE :
@@ -36,6 +38,7 @@ public class Lift implements ILift {
         }
     }
 
+    @Override
     public void close() {
         switch (this.state) {
             case OPENING_STATE:
@@ -54,6 +57,7 @@ public class Lift implements ILift {
         }
     }
 
+    @Override
     public void run() {
         switch (this.state) {
             case OPENING_STATE://电梯不能开着门就走
@@ -73,6 +77,7 @@ public class Lift implements ILift {
         }
     }
 
+    @Override
     public void stop() {
         switch (this.state) {
             case OPENING_STATE: //开门的电梯已经是是停止的了(正常情况下)

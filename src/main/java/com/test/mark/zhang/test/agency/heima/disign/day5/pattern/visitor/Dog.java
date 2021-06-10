@@ -8,6 +8,7 @@ package com.test.mark.zhang.test.agency.heima.disign.day5.pattern.visitor;
  */
 public class Dog implements Animal {
 
+    @Override
     public void accept(Person person) {
         person.feed(this); //访问者给宠物猫喂食
         System.out.println("好好吃，汪汪汪。。。");

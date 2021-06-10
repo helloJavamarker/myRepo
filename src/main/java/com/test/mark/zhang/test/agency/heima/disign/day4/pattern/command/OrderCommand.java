@@ -20,6 +20,7 @@ public class OrderCommand implements Command {
         this.order = order;
     }
 
+    @Override
     public void execute() {
         System.out.println(order.getDiningTable() + "桌的订单：");
         Map<String, Integer> foodDir = order.getFoodDir();

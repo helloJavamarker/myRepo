@@ -28,6 +28,7 @@ public class MediatorStructure extends Mediator {
         this.tenant = tenant;
     }
 
+    @Override
     public void constact(String message, Person person) {
         if(person == houseOwner) {
             tenant.getMessage(message);

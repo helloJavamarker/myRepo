@@ -1,7 +1,7 @@
 package com.test.mark.zhang.test.agency.heima.disign.day1.principles.demo4.after;
 
 
-import com.test.mark.zhang.test.agency.heima.disign.day4.principles.demo4.before.HeimaSafetyDoor;
+import com.test.mark.zhang.test.agency.heima.disign.day1.principles.demo4.before.HeimaSafetyDoor;
 
 /**
  * @version v1.0
