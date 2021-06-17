@@ -19,6 +19,7 @@ public class Person {
     private int age;
 
     private String hobby;
+    private String hobbyName;
 
     private long IDCard;
 }

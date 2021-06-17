@@ -11,23 +11,23 @@ import java.util.Properties;
 public class KafkaService {
 
     public void sendMessage(String topic, String message) {
-        System.out.println("send kafka");
-        Properties properties = new Properties();
-        //Invalid url in bootstrap.servers: 127.0.0.1 网上说要给hosts配置映射
-        //如：172.24.110.110  kafka服务器主机名
-        properties.put("bootstrap.servers","127.0.0.1");
-        //properties.put("bootstrap.servers","127.0.0.1,localhost");
-        //下面两个配置必须加,不然会报错
-        //Missing required configuration "key.serializer" which has no default value.
-        properties.put("key.serializer", StringSerializer.class.getName());
-        properties.put("value.serializer", StringSerializer.class.getName());
-        properties.put("retries", 2);
-        properties.put("acks", "all");
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-        try {
-            producer.send(new ProducerRecord<>(topic, message));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        System.out.println("send kafka");
+//        Properties properties = new Properties();
+//        //Invalid url in bootstrap.servers: 127.0.0.1 网上说要给hosts配置映射
+//        //如：172.24.110.110  kafka服务器主机名
+//        properties.put("bootstrap.servers","127.0.0.1");
+//        //properties.put("bootstrap.servers","127.0.0.1,localhost");
+//        //下面两个配置必须加,不然会报错
+//        //Missing required configuration "key.serializer" which has no default value.
+//        properties.put("key.serializer", StringSerializer.class.getName());
+//        properties.put("value.serializer", StringSerializer.class.getName());
+//        properties.put("retries", 2);
+//        properties.put("acks", "all");
+//        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
+//        try {
+//            producer.send(new ProducerRecord<>(topic, message));
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

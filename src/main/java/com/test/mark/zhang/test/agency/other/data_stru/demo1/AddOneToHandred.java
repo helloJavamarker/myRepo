@@ -1,0 +1,26 @@
+package com.test.mark.zhang.test.agency.other.data_stru.demo1;
+
+import com.google.common.collect.Lists;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class AddOneToHandred {
+
+	public static void main(String[] args) {
+		int total=0;
+		int end=100;
+		//使用for循环计算
+		for(int i=1;i<=end;i++) {
+			total+=i;
+		}
+		
+		//直接计算
+		total=(1+end)*end/2;
+		//算法没有最好的，只有最适合的。
+		
+		//打印结果
+		System.out.println(total);
+    }
+
+}

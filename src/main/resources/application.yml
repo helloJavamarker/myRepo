@@ -22,3 +22,6 @@ spring:
     lettuce:
       shutdown-timeout: 0
 
+#可以读取,但是idea不能识别  在properties文件中可以识别
+zhang1: mark1
+

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ConsumerDemo {
-    @KafkaListener(topics = "topicxxx")
-    public void listen (ConsumerRecord<?, ?> record){
-        System.out.printf("topic is %s, offset is %d, value is %s \n", record.topic(), record.offset(), record.value());
-    }
+//    @KafkaListener(topics = "topicxxx")
+//    public void listen (ConsumerRecord<?, ?> record){
+//        System.out.printf("topic is %s, offset is %d, value is %s \n", record.topic(), record.offset(), record.value());
+//    }
 
 }
