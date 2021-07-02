@@ -1,7 +1,9 @@
 package com.test.mark.zhang.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -11,7 +13,6 @@ public class Person {
         this.age = age;
         this.hobby = hobby;
         this.IDCard = IDCard;
-        System.out.println("construct");
     }
 
     private String name;

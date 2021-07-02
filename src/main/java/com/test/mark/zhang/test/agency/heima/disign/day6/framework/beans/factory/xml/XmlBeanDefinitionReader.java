@@ -1,4 +1,3 @@
-/*
 package com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.factory.xml;
 
 import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.BeanDefinition;
@@ -7,17 +6,19 @@ import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.Propert
 import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.factory.support.BeanDefinitionReader;
 import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.factory.support.BeanDefinitionRegistry;
 import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.factory.support.SimpleBeanDefinitionRegistry;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import java.io.InputStream;
 import java.util.List;
 
-*/
 /**
  * @version v1.0
  * @ClassName: XmlBeanDefinitionReader
  * @Description: 针对xml配置文件进行解析的类
  * @Author: 黑马程序员
- *//*
+ */
 
 public class XmlBeanDefinitionReader implements BeanDefinitionReader {
 
@@ -28,10 +29,12 @@ public class XmlBeanDefinitionReader implements BeanDefinitionReader {
         registry = new SimpleBeanDefinitionRegistry();
     }
 
+    @Override
     public BeanDefinitionRegistry getRegistry() {
         return registry;
     }
 
+    @Override
     public void loadBeanDefinitions(String configLocation) throws Exception {
         //使用dom4j进行xml配置文件的解析
         SAXReader reader = new SAXReader();
@@ -76,4 +79,3 @@ public class XmlBeanDefinitionReader implements BeanDefinitionReader {
         
     }
 }
-*/

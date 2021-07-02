@@ -1,4 +1,3 @@
-/*
 package com.test.mark.zhang.test.agency.heima.disign.day6.framework.context.support;
 
 import com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans.BeanDefinition;
@@ -10,14 +9,13 @@ import com.test.mark.zhang.test.agency.heima.disign.day6.framework.utils.StringU
 
 import java.lang.reflect.Method;
 
-*/
 /**
  * @version v1.0
  * @ClassName: ClassPathXmlApplicationContext
  * @Description: IOC容器具体的子实现类
  *          用于加载类路径下的xml格式的配置文件
  * @Author: 黑马程序员
- *//*
+ */
 
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
@@ -33,6 +31,7 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
     }
 
     //根据bean对象的名称获取bean对象
+    @Override
     public Object getBean(String name) throws Exception {
         //判断对象容器中是否包含指定名称的bean对象，如果包含，直接返回即可，如果不包含，需要自行创建
         Object obj = singletonObjects.get(name);
@@ -87,6 +86,7 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
         return beanObj;
     }
 
+    @Override
     public <T> T getBean(String name, Class<? extends T> clazz) throws Exception {
         Object bean = getBean(name);
         if(bean == null) {
@@ -95,4 +95,3 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
         return clazz.cast(bean);
     }
 }
-*/

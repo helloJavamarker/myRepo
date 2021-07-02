@@ -1,5 +1,7 @@
 package com.test.mark.zhang.test.agency.heima.disign.day6.framework.beans;
 
+import com.test.mark.zhang.test.agency.heima.disign.day6.framework.utils.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class MutablePropertyValues implements Iterable<PropertyValue> {
 
     //定义list集合对象，用来存储PropertyValue对象
+    //final对象,必须在类初始化之前完成赋值
     private final List<PropertyValue> propertyValueList;
 
     public MutablePropertyValues() {
