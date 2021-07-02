@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+    <update id="id" paramType="java.util.List">
+<!--  list.size()>0     arrays.size>0 -->
+        <foreach collection="assets" item="item" open="" close="" separator=";">
+            update t_asset_info
+            <set>
+                assetName=#{item.assetName},
+                assetCode=#{item.assetCode}
+            </set>
+            where assetIp=#{assetIp}
+        </foreach>
+    </update>
+
+<!--    注意open,close,separator,,,collection,item要对应使用,,,,,而且由于Mybatis映射文件中的sql语句默认是不支持以" ; " 结尾的，也就是不支持多条sql语句的执行。
+所以需要在连接mysql的url上加 &allowMultiQueries=true 这个才可以执行    spring.datasource.url=    本质是sql拼接,一般不要超过1000条   有更好的方法
+集合不能是空,否则会抛query was empty,,,,,数据库数据可以没有对应的值-->
+
+</mapper>

@@ -50,5 +50,17 @@ public class LockSupportDemo2 {
         t1.start();
         LockSupport.unpark(t1);
         System.out.println("unpark invoked");
+
+        String s = "{\"name\":\"zhang\"}";
+        String s2 = "li {\"name\":\"zhang\",\"li\":\"si\",\"hobby_name\":\"si2\"}";
+//        StringUtils.substring(s2, StringUtils.startsWith(s2, "{"));
+        //System.out.println(StringUtils.indexOf(null, "."));
+        System.out.println(StringUtils.substring(s2, StringUtils.indexOf(s2, "{")));
+
+        System.out.println(JSONObject.parseObject(s, Person.class));
+        //System.out.println(JSONObject.parseObject(s2, Person.class));
+        System.out.println(JSONObject.parseObject(StringUtils.substring(s2, StringUtils.indexOf(s2, "{")), Person.class));
+
+        System.out.println(Optional.ofNullable(null).orElse("li"));
     }
 }
