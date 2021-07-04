@@ -1,8 +1,8 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners;
 
 import com.google.common.eventbus.Subscribe;
-import com.wangwenjun.guava.eventbus.events.Apple;
-import com.wangwenjun.guava.eventbus.events.Fruit;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Apple;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Fruit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

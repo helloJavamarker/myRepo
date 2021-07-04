@@ -1,9 +1,13 @@
 package com.test.mark.zhang.test.agency.wang.guava.concurrent;
 
-import com.google.common.util.concurrent.*;
+import com.google.common.util.concurrent.FutureCallback;
+import reactor.util.annotation.Nullable;
 
-import javax.annotation.Nullable;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /***************************************
  * @author:Alex Wang

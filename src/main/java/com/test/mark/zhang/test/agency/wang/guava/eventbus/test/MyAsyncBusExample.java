@@ -1,6 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus.test;
 
-import com.wangwenjun.guava.eventbus.internal.MyAsyncEventBus;
+
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MyAsyncEventBus;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;

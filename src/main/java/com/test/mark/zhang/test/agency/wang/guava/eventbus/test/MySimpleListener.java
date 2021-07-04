@@ -1,6 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus.test;
 
-import com.wangwenjun.guava.eventbus.internal.MySubscribe;
+
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MySubscribe;
 
 /***************************************
  * @author:Alex Wang

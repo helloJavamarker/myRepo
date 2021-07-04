@@ -1,10 +1,9 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus;
 
 import com.google.common.eventbus.AsyncEventBus;
-import com.wangwenjun.guava.eventbus.listeners.SimpleListener;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.SimpleListener;
 
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 /***************************************
  * @author:Alex Wang

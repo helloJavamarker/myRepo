@@ -1,8 +1,8 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus;
 
 import com.google.common.eventbus.EventBus;
-import com.wangwenjun.guava.eventbus.service.QueryService;
-import com.wangwenjun.guava.eventbus.service.RequestQueryHandler;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.service.QueryService;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.service.RequestQueryHandler;
 
 /***************************************
  * @author:Alex Wang

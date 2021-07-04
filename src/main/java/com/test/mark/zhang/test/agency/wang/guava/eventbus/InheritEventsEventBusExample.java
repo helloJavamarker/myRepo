@@ -1,10 +1,9 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus;
 
 import com.google.common.eventbus.EventBus;
-import com.wangwenjun.guava.eventbus.events.Apple;
-import com.wangwenjun.guava.eventbus.events.Fruit;
-import com.wangwenjun.guava.eventbus.listeners.ConcreteListener;
-import com.wangwenjun.guava.eventbus.listeners.FruitEaterListener;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Apple;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Fruit;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.FruitEaterListener;
 
 /***************************************
  * @author:Alex Wang

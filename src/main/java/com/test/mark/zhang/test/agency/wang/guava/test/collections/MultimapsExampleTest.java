@@ -2,13 +2,12 @@ package com.test.mark.zhang.test.agency.wang.guava.test.collections;
 
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Multimaps;
 import org.junit.Test;
 
 import java.util.HashMap;
 
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /***************************************
  * @author:Alex Wang

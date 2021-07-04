@@ -1,5 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.concurrent;
 
+import org.springframework.data.redis.core.convert.Bucket;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
@@ -25,7 +27,7 @@ public class BucketTest
                 for (; ; )
                 {
                     int data = DATA_CREATOR.getAndIncrement();
-                    bucket.submit(data);
+                    //bucket.submit(data);
                     try
                     {
                         TimeUnit.MILLISECONDS.sleep(200L);
@@ -50,7 +52,7 @@ public class BucketTest
                         {
                             for (; ; )
                             {
-                                bucket.takeThenConsume(x -> System.out.println(currentThread() + " W " + x));
+                               // bucket.takeThenConsume(x -> System.out.println(currentThread() + " W " + x));
                             }
                         }).start()
                 );

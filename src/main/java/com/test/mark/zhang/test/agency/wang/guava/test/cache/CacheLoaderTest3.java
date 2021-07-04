@@ -1,7 +1,12 @@
 package com.test.mark.zhang.test.agency.wang.guava.test.cache;
 
 import com.google.common.base.Optional;
-import com.google.common.cache.*;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.cache.RemovalCause;
+import com.google.common.cache.RemovalListener;
+import com.test.mark.zhang.test.agency.wang.guava.cache.Employee;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -1,12 +1,10 @@
 package com.test.mark.zhang.test.agency.wang.guava.test;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.hamcrest.core.IsEqual.equalTo;

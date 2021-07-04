@@ -2,8 +2,8 @@ package com.test.mark.zhang.test.agency.wang.guava.eventbus.service;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import com.wangwenjun.guava.eventbus.events.Request;
-import com.wangwenjun.guava.eventbus.events.Response;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Request;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.events.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

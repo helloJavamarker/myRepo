@@ -1,6 +1,10 @@
 package com.test.mark.zhang.test.agency.wang.guava.test.cache;
 
-import com.google.common.cache.*;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheBuilderSpec;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.CacheStats;
+import com.google.common.cache.LoadingCache;
 import org.junit.Test;
 
 import static org.hamcrest.core.IsEqual.equalTo;

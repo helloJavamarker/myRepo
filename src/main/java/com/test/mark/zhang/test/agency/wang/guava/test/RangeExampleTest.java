@@ -1,6 +1,10 @@
 package com.test.mark.zhang.test.agency.wang.guava.test;
 
-import com.google.common.collect.*;
+import com.google.common.collect.BoundType;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Range;
+import com.google.common.collect.RangeMap;
+import com.google.common.collect.TreeRangeMap;
 import org.junit.Test;
 
 import java.util.NavigableMap;
@@ -8,7 +12,7 @@ import java.util.TreeMap;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /***************************************
  * @author:Alex Wang

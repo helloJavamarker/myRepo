@@ -1,6 +1,5 @@
 package com.test.mark.zhang.test.agency.wang.guava.test.io;
 
-import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteSink;
 import com.google.common.io.ByteSource;
@@ -9,7 +8,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;

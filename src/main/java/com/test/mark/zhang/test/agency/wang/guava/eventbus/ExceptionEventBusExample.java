@@ -1,7 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus;
 
 import com.google.common.eventbus.EventBus;
-import com.wangwenjun.guava.eventbus.listeners.ExceptionListener;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.ExceptionListener;
 
 /***************************************
  * @author:Alex Wang

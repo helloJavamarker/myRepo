@@ -3,6 +3,7 @@ package com.test.mark.zhang.test.agency.wang.guava.test.cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.test.mark.zhang.test.agency.wang.guava.cache.Employee;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;

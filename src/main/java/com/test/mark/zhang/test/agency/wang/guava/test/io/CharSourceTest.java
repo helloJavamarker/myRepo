@@ -2,11 +2,9 @@ package com.test.mark.zhang.test.agency.wang.guava.test.io;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.CharSource;
-import com.google.common.io.Files;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
@@ -38,6 +36,6 @@ public class CharSourceTest {
         );
 
         System.out.println(charSource.readLines().size());
-        charSource.lines().forEach(System.out::println);
+        //charSource.lines().forEach(System.out::println);
     }
 }

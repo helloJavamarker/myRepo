@@ -1,9 +1,8 @@
 package com.test.mark.zhang.test.agency.wang.guava.cache;
 
-import java.lang.ref.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.lang.ref.PhantomReference;
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
 
 public class ReferenceExample
 {

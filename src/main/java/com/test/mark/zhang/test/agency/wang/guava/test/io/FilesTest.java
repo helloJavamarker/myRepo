@@ -5,7 +5,10 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.FluentIterable;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
-import com.google.common.io.*;
+import com.google.common.io.CharSink;
+import com.google.common.io.FileWriteMode;
+import com.google.common.io.Files;
+import com.google.common.io.LineProcessor;
 import org.junit.After;
 import org.junit.Test;
 
@@ -197,21 +200,21 @@ public class FilesTest {
         File root = new File("C:\\Users\\wangwenjun\\IdeaProjects\\guava_programming\\src\\main");
 //        FluentIterable<File> files = Files.fileTreeTraverser().preOrderTraversal(root);
         FluentIterable<File> files = Files.fileTreeTraverser().preOrderTraversal(root).filter(File::isFile);
-        files.stream().forEach(System.out::println);
+        //files.stream().forEach(System.out::println);
     }
 
     @Test
     public void testTreeFilesPostOrderTraversal() {
         File root = new File("C:\\Users\\wangwenjun\\IdeaProjects\\guava_programming\\src\\main");
         FluentIterable<File> files = Files.fileTreeTraverser().postOrderTraversal(root);
-        files.stream().forEach(System.out::println);
+        //files.stream().forEach(System.out::println);
     }
 
     @Test
     public void testTreeFilesBreadthFirstTraversal() {
         File root = new File("C:\\Users\\wangwenjun\\IdeaProjects\\guava_programming\\src\\main");
         FluentIterable<File> files = Files.fileTreeTraverser().breadthFirstTraversal(root);
-        files.stream().forEach(System.out::println);
+        //files.stream().forEach(System.out::println);
     }
 
     @Test

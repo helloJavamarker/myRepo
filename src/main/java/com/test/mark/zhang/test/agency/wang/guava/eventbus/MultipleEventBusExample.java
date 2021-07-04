@@ -1,7 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus;
 
 import com.google.common.eventbus.EventBus;
-import com.wangwenjun.guava.eventbus.listeners.MultipleEventListeners;
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.MultipleEventListeners;
 
 /***************************************
  * @author:Alex Wang

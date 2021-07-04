@@ -1,6 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.test.io;
 
 import com.google.common.io.BaseEncoding;
+import com.test.mark.zhang.test.agency.wang.guava.io.Base64;
 import org.junit.Test;
 
 import static org.hamcrest.core.IsEqual.equalTo;

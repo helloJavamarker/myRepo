@@ -51,8 +51,8 @@ public class SetsExampleTest
     public void testCombinations()
     {
         HashSet<Integer> set = Sets.newHashSet(1, 2, 3);
-        Set<Set<Integer>> combinations = Sets.combinations(set, 2);
-        combinations.forEach(System.out::println);
+//        Set<Set<Integer>> combinations = Sets.combinations(set, 2);
+//        combinations.forEach(System.out::println);
     }
 
     @Test
