@@ -21,12 +21,10 @@ import java.util.stream.Collectors;
 @RequestMapping("org")
 public class OrgController {
 
-    private List<Organization> allOrgsCache = new ArrayList<>();
+    private static List<Organization> allOrgsCache = new ArrayList<>();
     @PostConstruct
     public void init() {
         //select from db
-
-
         //insert 总部data
         Organization organization = new Organization();
         organization.setId(101L);
@@ -73,9 +71,97 @@ public class OrgController {
         return orgIdMapTree;
     }
 
+    public Map<String, Organization> get2() {
+        Map<String, Organization> orgIdMapTree = generateData().stream()
+                .collect(Collectors.toMap(Organization::getOrgId, org -> org, (o1, o2) -> o1));
+        orgIdMapTree.forEach((orgId, organization) -> {
+            String parentId = organization.getParentOrgId();
+            Organization parent = orgIdMapTree.get(parentId);
+            if (parent != null) {
+                organization.setParent(parent);
+                List<Organization> children = parent.getChildren();
+                if (children == null) {
+                    parent.setChildren(new ArrayList<>());
+                }
+                children.add(organization);
+                //children.sort((c1, c2) -> (int)(c1.getId() - c2.getId()));
+                parent.setLeaf(false);
+            }
+            if (organization.getChildren() == null || organization.getChildren().size() == 0) {
+                organization.setLeaf(true);
+            }
+        });
+        return orgIdMapTree;
+    }
+
+    public static void main(String[] args) {
+        Map<String, Organization> orgIdMapTree = generateData().stream()
+                .collect(Collectors.toMap(Organization::getOrgId, org -> org, (o1, o2) -> o1));
+        orgIdMapTree.forEach((orgId, organization) -> {
+            String parentId = organization.getParentOrgId();
+            Organization parent = orgIdMapTree.get(parentId);
+            if (parent != null) {
+                organization.setParent(parent);
+                List<Organization> children = parent.getChildren();
+                if (children == null) {
+                    parent.setChildren(new ArrayList<>());
+                }
+                children.add(organization);
+                //children.sort((c1, c2) -> (int)(c1.getId() - c2.getId()));
+                parent.setLeaf(false);
+            }
+            if (organization.getChildren() == null || organization.getChildren().size() == 0) {
+                organization.setLeaf(true);
+            }
+        });
+        System.out.println(orgIdMapTree.get("200xx"));
+    }
+    @GetMapping("getAllChildren")
+    public List<Organization> getAllChildren(String branchId) {
+        Map<String, Organization> orgIdMapTree = allOrgsCache.stream()
+                .collect(Collectors.toMap(Organization::getOrgId, org -> org, (o1, o2) -> o1));
+        orgIdMapTree.forEach((orgId, organization) -> {
+            String parentId = organization.getParentOrgId();
+            Organization parent = orgIdMapTree.get(parentId);
+            if (parent != null) {
+                organization.setParent(parent);
+                List<Organization> children = parent.getChildren();
+                if (children == null) {
+                    parent.setChildren(new ArrayList<>());
+                }
+                children.add(organization);
+                //children.sort((c1, c2) -> (int)(c1.getId() - c2.getId()));
+                parent.setLeaf(false);
+            }
+            if (organization.getChildren() == null || organization.getChildren().size() == 0) {
+                organization.setLeaf(true);
+            }
+        });
+        //orgIdMapTree.v
+        List<Organization> orgs =new ArrayList<>();
+        for (Map.Entry<String, Organization> orgEntry : orgIdMapTree.entrySet()) {
+            if (branchId.equals(orgEntry.getKey())) {
+                orgs.add(orgEntry.getValue());
+
+            }
+        }
+
+        //得到某个子树
+        //遍历子树
 
 
-    private List<Organization> generateData() {
+        return new ArrayList<>();
+    }
+
+
+    private List<Organization> getAllChildren() {
+        return null;
+    }
+
+
+
+
+    private static List<Organization> generateData() {
         Organization organization1 = new Organization();
         organization1.setId(100L);
         organization1.setOrgName("总部");
@@ -146,6 +232,26 @@ public class OrgController {
         organization7.setOrgAddress("滨江");
         organization7.setOrgArea("滨江");
 
+        Organization organization8 = new Organization();
+        organization7.setId(202L);
+        organization7.setOrgName("西湖");
+        organization7.setAbbreviation(null);
+        organization7.setOrgId("403xx");
+        organization7.setParentOrgId("300xx");
+        organization7.setOrgIdentifier("");
+        organization7.setOrgAddress("滨江");
+        organization7.setOrgArea("滨江");
+
+        Organization organization9 = new Organization();
+        organization7.setId(202L);
+        organization7.setOrgName("余杭");
+        organization7.setAbbreviation(null);
+        organization7.setOrgId("404xx");
+        organization7.setParentOrgId("300xx");
+        organization7.setOrgIdentifier("");
+        organization7.setOrgAddress("滨江");
+        organization7.setOrgArea("滨江");
+
         allOrgsCache.add(organization1);
         allOrgsCache.add(organization2);
         allOrgsCache.add(organization3);
@@ -153,6 +259,8 @@ public class OrgController {
         allOrgsCache.add(organization5);
         allOrgsCache.add(organization6);
         allOrgsCache.add(organization7);
+        allOrgsCache.add(organization8);
+        allOrgsCache.add(organization9);
         return allOrgsCache;
     }
 

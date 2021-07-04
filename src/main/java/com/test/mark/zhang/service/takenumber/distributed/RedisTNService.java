@@ -18,6 +18,12 @@ public class RedisTNService {
         System.out.println(redisTemplate.opsForValue().get("myKey"));
     }
 
+
+    public String get(String key){
+        System.out.println(redisTemplate.opsForValue().get(key));
+        return redisTemplate.opsForValue().get(key);
+    }
+
     //*代替任意数量的字符   ?代替一个字符
     @Scheduled(cron = "0 50 10 ? * MON-THU")
     public void testScheduled(){

@@ -36,11 +36,25 @@ public class SyncIpTask implements Job {
             try {
                 TimeUnit.SECONDS.sleep(10);
                 run();
+                //重试3次
                 //递归调用三次
             } catch (InterruptedException interruptedException) {
                 interruptedException.printStackTrace();
             }
         }
+    }
+
+    public int insert() {
+//        int num = mapper.insert(security);
+//        if (num > 0) {
+//            try {
+//                addRel(security);  //这里什么时候会失败??
+//            } catch (Exception e) {
+//                log.error("添加失败");
+//                mapper.delete(security); //万一这一步失败!!
+//            }
+//        }
+        return 0;
     }
 
     public static void main(String[] args) throws InterruptedException {

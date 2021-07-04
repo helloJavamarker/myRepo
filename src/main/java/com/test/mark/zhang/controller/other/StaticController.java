@@ -1,4 +1,4 @@
-package com.test.mark.zhang.controller;
+package com.test.mark.zhang.controller.other;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
