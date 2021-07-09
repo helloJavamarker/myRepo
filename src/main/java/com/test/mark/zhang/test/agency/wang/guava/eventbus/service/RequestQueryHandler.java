@@ -12,21 +12,18 @@ import org.slf4j.LoggerFactory;
  * @Date:2017/10/19
  * 532500648
  ***************************************/
-public class RequestQueryHandler
-{
+public class RequestQueryHandler {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RequestQueryHandler.class);
 
     private final EventBus eventBus;
 
-    public RequestQueryHandler(EventBus eventBus)
-    {
+    public RequestQueryHandler(EventBus eventBus) {
         this.eventBus = eventBus;
     }
 
     @Subscribe
-    public void doQuery(Request request)
-    {
+    public void doQuery(Request request) {
         LOGGER.info("start query the orderNo [{}]", request.toString());
         Response response = new Response();
         this.eventBus.post(response);

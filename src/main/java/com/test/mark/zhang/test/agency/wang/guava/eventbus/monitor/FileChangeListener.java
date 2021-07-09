@@ -9,14 +9,12 @@ import org.slf4j.LoggerFactory;
  * @Date:2017/10/19
  * 532500648
  ***************************************/
-public class FileChangeListener
-{
+public class FileChangeListener {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(FileChangeListener.class);
 
     @Subscribe
-    public void onChange(FileChangeEvent event)
-    {
+    public void onChange(FileChangeEvent event) {
         LOGGER.info("{}-{}", event.getPath(), event.getKind());
     }
 }

@@ -18,12 +18,10 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class SetsExampleTest
-{
+public class SetsExampleTest {
 
     @Test
-    public void testCreate()
-    {
+    public void testCreate() {
         HashSet<Integer> set = Sets.newHashSet(1, 2, 3);
         assertThat(set.size(), equalTo(3));
 
@@ -37,8 +35,7 @@ public class SetsExampleTest
     }
 
     @Test
-    public void testCartesianProduct()
-    {
+    public void testCartesianProduct() {
 
         Set<List<Integer>> set = Sets.cartesianProduct(Sets.newHashSet(1, 2), Sets.newHashSet(3, 4), Sets.newHashSet(5, 6));
 
@@ -48,16 +45,14 @@ public class SetsExampleTest
     }
 
     @Test
-    public void testCombinations()
-    {
+    public void testCombinations() {
         HashSet<Integer> set = Sets.newHashSet(1, 2, 3);
         //Set<Set<Integer>> combinations = Sets.combinations(set, 2);
         //combinations.forEach(System.out::println);
     }
 
     @Test
-    public void testDiff()
-    {
+    public void testDiff() {
         HashSet<Integer> set1 = Sets.newHashSet(1, 2, 3);
         HashSet<Integer> set2 = Sets.newHashSet(1, 4, 6);
         Sets.SetView<Integer> diffResult1 = Sets.difference(set1, set2);
@@ -69,16 +64,14 @@ public class SetsExampleTest
     }
 
     @Test
-    public void testIntersection()
-    {
+    public void testIntersection() {
         HashSet<Integer> set1 = Sets.newHashSet(1, 2, 3);
         HashSet<Integer> set2 = Sets.newHashSet(1, 4, 6);
         Sets.intersection(set1, set2).forEach(System.out::println);
     }
 
     @Test
-    public void testUnionSection()
-    {
+    public void testUnionSection() {
         HashSet<Integer> set1 = Sets.newHashSet(1, 2, 3);
         HashSet<Integer> set2 = Sets.newHashSet(1, 4, 6);
         Sets.union(set1, set2).forEach(System.out::println);

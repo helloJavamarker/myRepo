@@ -18,21 +18,17 @@ import java.util.Map;
  * @param <K>
  * @param <V>
  */
-public class LinkedHashLRUCache<K, V> implements LRUCache<K, V>
-{
-    private static class InternalLRUCache<K, V> extends LinkedHashMap<K, V>
-    {
+public class LinkedHashLRUCache<K, V> implements LRUCache<K, V> {
+    private static class InternalLRUCache<K, V> extends LinkedHashMap<K, V> {
         final private int limit;
 
-        public InternalLRUCache(int limit)
-        {
+        public InternalLRUCache(int limit) {
             super(16, 0.75f, true);
             this.limit = limit;
         }
 
         @Override
-        protected boolean removeEldestEntry(Map.Entry<K, V> eldest)
-        {
+        protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
             return size() > limit;
         }
     }
@@ -42,52 +38,44 @@ public class LinkedHashLRUCache<K, V> implements LRUCache<K, V>
     private final InternalLRUCache<K, V> internalLRUCache;
 
 
-    public LinkedHashLRUCache(int limit)
-    {
+    public LinkedHashLRUCache(int limit) {
         Preconditions.checkArgument(limit > 0, "The limit big than zero.");
         this.limit = limit;
         this.internalLRUCache = new InternalLRUCache<>(limit);
     }
 
     @Override
-    public void put(K key, V value)
-    {
+    public void put(K key, V value) {
         this.internalLRUCache.put(key, value);
     }
 
     @Override
-    public V get(K key)
-    {
+    public V get(K key) {
         return this.internalLRUCache.get(key);
     }
 
     @Override
-    public void remove(K key)
-    {
+    public void remove(K key) {
         this.internalLRUCache.remove(key);
     }
 
     @Override
-    public int size()
-    {
+    public int size() {
         return this.internalLRUCache.size();
     }
 
     @Override
-    public void clear()
-    {
+    public void clear() {
         this.internalLRUCache.clear();
     }
 
     @Override
-    public int limit()
-    {
+    public int limit() {
         return this.limit;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return internalLRUCache.toString();
     }
 }

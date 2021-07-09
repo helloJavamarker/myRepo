@@ -19,8 +19,7 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class CacheLoaderTest2
-{
+public class CacheLoaderTest2 {
 
     /**
      * TTL->time to live
@@ -29,8 +28,7 @@ public class CacheLoaderTest2
      * @throws InterruptedException
      */
     @Test
-    public void testEvictionByAccessTime() throws InterruptedException
-    {
+    public void testEvictionByAccessTime() throws InterruptedException {
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder()
                 .expireAfterAccess(2, TimeUnit.SECONDS)
                 .build(this.createCacheLoader());
@@ -55,8 +53,7 @@ public class CacheLoaderTest2
      * Write time => write/update
      */
     @Test
-    public void testEvictionByWriteTime() throws InterruptedException
-    {
+    public void testEvictionByWriteTime() throws InterruptedException {
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder()
                 .expireAfterWrite(2, TimeUnit.SECONDS)
                 .build(this.createCacheLoader());
@@ -79,8 +76,7 @@ public class CacheLoaderTest2
      * Strong/soft/weak/Phantom reference
      */
     @Test
-    public void testWeakKey() throws InterruptedException
-    {
+    public void testWeakKey() throws InterruptedException {
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder()
                 .expireAfterWrite(2, TimeUnit.SECONDS)
                 .weakValues()
@@ -98,23 +94,20 @@ public class CacheLoaderTest2
     }
 
     @Test
-    public void testSoftKey() throws InterruptedException
-    {
+    public void testSoftKey() throws InterruptedException {
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder()
                 .expireAfterWrite(2, TimeUnit.SECONDS)
                 .softValues()
                 .build(this.createCacheLoader());
         int i = 0;
-        for (; ; )
-        {
+        for (; ; ) {
             cache.put("Alex" + i, new Employee("Alex" + 1, "Alex" + 1, "Alex" + 1));
             System.out.println("The Employee [" + (i++) + "] is store into cache.");
             TimeUnit.MILLISECONDS.sleep(600);
         }
     }
 
-    private CacheLoader<String, Employee> createCacheLoader()
-    {
+    private CacheLoader<String, Employee> createCacheLoader() {
         return CacheLoader.from(key -> new Employee(key, key, key));
     }
 }

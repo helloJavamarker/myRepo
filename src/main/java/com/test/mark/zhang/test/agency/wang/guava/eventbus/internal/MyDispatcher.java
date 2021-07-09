@@ -10,8 +10,7 @@ import java.util.concurrent.ExecutorService;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public class MyDispatcher
-{
+public class MyDispatcher {
 
     private final Executor executorService;
 
@@ -21,20 +20,16 @@ public class MyDispatcher
 
     public static final Executor PRE_THREAD_EXECUTOR_SERVICE = PreThreadExecutorService.INSTANCE;
 
-    private MyDispatcher(Executor executorService, MyEventExceptionHandler exceptionHandler)
-    {
+    private MyDispatcher(Executor executorService, MyEventExceptionHandler exceptionHandler) {
         this.executorService = executorService;
         this.exceptionHandler = exceptionHandler;
     }
 
 
-    public void dispatch(Bus bus, MyRegistry registry, Object event, String topic)
-    {
+    public void dispatch(Bus bus, MyRegistry registry, Object event, String topic) {
         ConcurrentLinkedQueue<MySubscriber> subscribers = registry.scanSubscriber(topic);
-        if (null == subscribers)
-        {
-            if (exceptionHandler != null)
-            {
+        if (null == subscribers) {
+            if (exceptionHandler != null) {
                 exceptionHandler.handle(new IllegalArgumentException("The topic " + topic + " not bind yet"),
                         new BaseMyEventContext(bus.getBusName(), null, event));
             }
@@ -51,73 +46,60 @@ public class MyDispatcher
                 }).forEach(subscriber -> realInvokeSubscribe(subscriber, event, bus));
     }
 
-    private void realInvokeSubscribe(MySubscriber subscriber, Object event, Bus bus)
-    {
+    private void realInvokeSubscribe(MySubscriber subscriber, Object event, Bus bus) {
         Method subscribeMethod = subscriber.getSubscribeMethod();
         Object subscribeObject = subscriber.getSubscribeObject();
         executorService.execute(() ->
         {
-            try
-            {
+            try {
                 subscribeMethod.invoke(subscribeObject, event);
-            } catch (Exception e)
-            {
-                if (null != exceptionHandler)
-                {
+            } catch (Exception e) {
+                if (null != exceptionHandler) {
                     exceptionHandler.handle(e, new BaseMyEventContext(bus.getBusName(), subscriber, event));
                 }
             }
         });
     }
 
-    public void close()
-    {
+    public void close() {
         if (executorService instanceof ExecutorService)
             ((ExecutorService) executorService).shutdown();
     }
 
-    static MyDispatcher newDispatcher(MyEventExceptionHandler exceptionHandler, Executor executor)
-    {
+    static MyDispatcher newDispatcher(MyEventExceptionHandler exceptionHandler, Executor executor) {
         return new MyDispatcher(executor, exceptionHandler);
     }
 
-    static MyDispatcher seqDispatcher(MyEventExceptionHandler exceptionHandler)
-    {
+    static MyDispatcher seqDispatcher(MyEventExceptionHandler exceptionHandler) {
         return new MyDispatcher(SEQ_EXECUTOR_SERVICE, exceptionHandler);
     }
 
-    static MyDispatcher perThreaDDispatcher(MyEventExceptionHandler exceptionHandler)
-    {
+    static MyDispatcher perThreaDDispatcher(MyEventExceptionHandler exceptionHandler) {
         return new MyDispatcher(PRE_THREAD_EXECUTOR_SERVICE, exceptionHandler);
     }
 
-    private static class SeqExecutorService implements Executor
-    {
+    private static class SeqExecutorService implements Executor {
 
         private final static SeqExecutorService INSTANCE = new SeqExecutorService();
 
         @Override
-        public void execute(Runnable command)
-        {
+        public void execute(Runnable command) {
             command.run();
         }
     }
 
 
-    private static class PreThreadExecutorService implements Executor
-    {
+    private static class PreThreadExecutorService implements Executor {
 
         private final static PreThreadExecutorService INSTANCE = new PreThreadExecutorService();
 
         @Override
-        public void execute(Runnable command)
-        {
+        public void execute(Runnable command) {
             new Thread(command).start();
         }
     }
 
-    private static class BaseMyEventContext implements MyEventContext
-    {
+    private static class BaseMyEventContext implements MyEventContext {
 
         private final String eventBusName;
 
@@ -125,34 +107,29 @@ public class MyDispatcher
 
         private final Object event;
 
-        private BaseMyEventContext(String eventBusName, MySubscriber subscriber, Object event)
-        {
+        private BaseMyEventContext(String eventBusName, MySubscriber subscriber, Object event) {
             this.eventBusName = eventBusName;
             this.subscriber = subscriber;
             this.event = event;
         }
 
         @Override
-        public String getSource()
-        {
+        public String getSource() {
             return this.eventBusName;
         }
 
         @Override
-        public Object getSubscriber()
-        {
+        public Object getSubscriber() {
             return subscriber != null ? subscriber.getSubscribeObject() : null;
         }
 
         @Override
-        public Method getSubscribe()
-        {
+        public Method getSubscribe() {
             return subscriber != null ? subscriber.getSubscribeMethod() : null;
         }
 
         @Override
-        public Object getEvent()
-        {
+        public Object getEvent() {
             return this.event;
         }
     }

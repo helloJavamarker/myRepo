@@ -15,12 +15,10 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class MultimapsExampleTest
-{
+public class MultimapsExampleTest {
 
     @Test
-    public void testBasic()
-    {
+    public void testBasic() {
         LinkedListMultimap<String, String> multipleMap = LinkedListMultimap.create();
         HashMap<String, String> hashMap = Maps.newHashMap();
         hashMap.put("1", "1");

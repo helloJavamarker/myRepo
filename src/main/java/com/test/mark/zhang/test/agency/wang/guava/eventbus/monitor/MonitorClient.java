@@ -18,10 +18,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * .position
  */
-public class MonitorClient
-{
-    public static void main(String[] args) throws Exception
-    {
+public class MonitorClient {
+    public static void main(String[] args) throws Exception {
         final EventBus eventBus = new EventBus();
         eventBus.register(new FileChangeListener());
 
@@ -29,11 +27,9 @@ public class MonitorClient
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() ->
         {
-            try
-            {
+            try {
                 monitor.stopMonitor();
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }, 2, TimeUnit.SECONDS);

@@ -6,8 +6,7 @@ package com.test.mark.zhang.test.agency.wang.guava.cache;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public interface LRUCache<K, V>
-{
+public interface LRUCache<K, V> {
 
     void put(K key, V value);
 

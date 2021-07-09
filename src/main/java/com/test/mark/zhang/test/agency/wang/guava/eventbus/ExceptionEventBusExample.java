@@ -8,10 +8,8 @@ import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.ExceptionLi
  * @Date:2017/10/19
  * 532500648
  ***************************************/
-public class ExceptionEventBusExample
-{
-    public static void main(String[] args)
-    {
+public class ExceptionEventBusExample {
+    public static void main(String[] args) {
         final EventBus eventBus = new EventBus((exception, context) ->
         {
             System.out.println(context.getEvent());

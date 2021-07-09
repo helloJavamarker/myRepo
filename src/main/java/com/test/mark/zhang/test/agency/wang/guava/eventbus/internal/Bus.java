@@ -5,8 +5,7 @@ package com.test.mark.zhang.test.agency.wang.guava.eventbus.internal;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public interface Bus
-{
+public interface Bus {
 
     void register(Object subscriber);
 

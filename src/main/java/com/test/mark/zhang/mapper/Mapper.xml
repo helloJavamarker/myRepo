@@ -15,6 +15,12 @@
         </foreach>
     </update>
 
+<!--    mysql中insert into和replace into以及insert ignore用法区别：
+mysql中常用的三种插入数据的语句:
+insert into表示插入数据，数据库会检查主键，如果出现重复会报错；
+replace into表示插入替换数据，需求表中有PrimaryKey，或者unique索引，如果数据库已经存在数据，则用新数据替换，如果没有数据效果则和insert into一样；
+insert ignore表示，如果中已经存在相同的记录，则忽略当前新数据； -->
+
 <!--    注意open,close,separator,,,collection,item要对应使用,,,,,而且由于Mybatis映射文件中的sql语句默认是不支持以" ; " 结尾的，也就是不支持多条sql语句的执行。
 所以需要在连接mysql的url上加 &allowMultiQueries=true 这个才可以执行    spring.datasource.url=    本质是sql拼接,一般不要超过1000条   有更好的方法
 集合不能是空,否则会抛query was empty,,,,,数据库数据可以没有对应的值-->

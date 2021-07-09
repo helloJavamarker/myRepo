@@ -11,25 +11,20 @@ import org.slf4j.LoggerFactory;
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public class FruitEaterListener
-{
+public class FruitEaterListener {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(FruitEaterListener.class);
 
     @Subscribe
-    public void eat(Fruit event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void eat(Fruit event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Fruit eat [{}].", event);
         }
     }
 
     @Subscribe
-    public void eat(Apple event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void eat(Apple event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Apple eat [{}].", event);
         }
     }

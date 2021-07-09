@@ -9,16 +9,13 @@ import org.slf4j.LoggerFactory;
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public abstract class AbstractListener
-{
+public abstract class AbstractListener {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AbstractListener.class);
 
     @Subscribe
-    public void commonTask(String event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void commonTask(String event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("The event [{}] will be handle by {}.{}", event, this.getClass().getSimpleName(), "commonTask");
         }
     }

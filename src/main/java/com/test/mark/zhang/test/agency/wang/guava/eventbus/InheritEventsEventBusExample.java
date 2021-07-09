@@ -10,10 +10,8 @@ import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.FruitEaterL
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public class InheritEventsEventBusExample
-{
-    public static void main(String[] args)
-    {
+public class InheritEventsEventBusExample {
+    public static void main(String[] args) {
         final EventBus eventBus = new EventBus();
         eventBus.register(new FruitEaterListener());
         eventBus.post(new Apple("apple"));

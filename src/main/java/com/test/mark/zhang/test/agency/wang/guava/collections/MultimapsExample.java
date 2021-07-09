@@ -6,6 +6,5 @@ package com.test.mark.zhang.test.agency.wang.guava.collections;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class MultimapsExample
-{
+public class MultimapsExample {
 }

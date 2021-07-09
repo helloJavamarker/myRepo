@@ -11,59 +11,46 @@ import java.util.concurrent.TimeUnit;
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public class SimpleListener
-{
+public class SimpleListener {
     private final static Logger LOGGER = LoggerFactory.getLogger(SimpleListener.class);
 
     @Subscribe
-    public void doAction(final String event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void doAction(final String event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Received event [{}] and will take a action", event);
         }
     }
 
     @Subscribe
-    public void doAction1(final String event)
-    {
+    public void doAction1(final String event) {
 
-        try
-        {
+        try {
             TimeUnit.MINUTES.sleep(10);
-        } catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (LOGGER.isInfoEnabled())
-        {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Received event [{}] and will take a action1", event);
         }
     }
 
     @Subscribe
-    public void doAction2(final String event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void doAction2(final String event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Received event [{}] and will take a action2", event);
         }
     }
 
     @Subscribe
-    public void doAction3(final String event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void doAction3(final String event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Received event [{}] and will take a action2", event);
         }
     }
 
     @Subscribe
-    public void doAction4(final String event)
-    {
-        if (LOGGER.isInfoEnabled())
-        {
+    public void doAction4(final String event) {
+        if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Received event [{}] and will take a action2", event);
         }
     }

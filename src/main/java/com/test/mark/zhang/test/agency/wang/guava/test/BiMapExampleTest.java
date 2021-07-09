@@ -15,31 +15,26 @@ import static org.junit.Assert.fail;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class BiMapExampleTest
-{
+public class BiMapExampleTest {
 
     @Test
-    public void testCreateAndPut()
-    {
+    public void testCreateAndPut() {
         HashBiMap<String, String> biMap = HashBiMap.create();
         biMap.put("1", "2");
         biMap.put("1", "3");
         assertThat(biMap.containsKey("1"), is(true));
         assertThat(biMap.size(), equalTo(1));
 
-        try
-        {
+        try {
             biMap.put("2", "3");
             fail();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void testBiMapInverse()
-    {
+    public void testBiMapInverse() {
         HashBiMap<String, String> biMap = HashBiMap.create();
         biMap.put("1", "2");
         biMap.put("2", "3");
@@ -58,8 +53,7 @@ public class BiMapExampleTest
     }
 
     @Test
-    public void testCreateAndForcePut()
-    {
+    public void testCreateAndForcePut() {
         HashBiMap<String, String> biMap = HashBiMap.create();
         biMap.put("1", "2");
         assertThat(biMap.containsKey("1"), is(true));

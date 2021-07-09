@@ -99,8 +99,8 @@ public class SplitterTest {
                 .omitEmptyStrings().withKeyValueSeparator("=").split("hello=HELLO| world=WORLD|||");
         assertThat(result, notNullValue());
         assertThat(result.size(), equalTo(2));
-        assertThat(result.get("hello"),equalTo("HELLO"));
-        assertThat(result.get("world"),equalTo("WORLD"));
+        assertThat(result.get("hello"), equalTo("HELLO"));
+        assertThat(result.get("world"), equalTo("WORLD"));
 
     }
 }

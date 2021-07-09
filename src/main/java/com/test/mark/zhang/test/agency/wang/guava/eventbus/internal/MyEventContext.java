@@ -7,8 +7,7 @@ import java.lang.reflect.Method;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public interface MyEventContext
-{
+public interface MyEventContext {
 
     String getSource();
 

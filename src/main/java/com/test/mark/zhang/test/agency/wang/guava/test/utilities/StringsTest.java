@@ -56,7 +56,7 @@ public class StringsTest {
 
     }
 
-    public Integer text(){
+    public Integer text() {
         return 0;
     }
 }

@@ -5,10 +5,8 @@ package com.test.mark.zhang.test.agency.wang.guava.eventbus.events;
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public class Apple extends Fruit
-{
-    public Apple(String name)
-    {
+public class Apple extends Fruit {
+    public Apple(String name) {
         super(name);
     }
 }

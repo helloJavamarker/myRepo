@@ -5,7 +5,6 @@ package com.test.mark.zhang.test.agency.wang.guava.eventbus.internal;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public interface MyEventExceptionHandler
-{
+public interface MyEventExceptionHandler {
     void handle(Throwable cause, MyEventContext context);
 }

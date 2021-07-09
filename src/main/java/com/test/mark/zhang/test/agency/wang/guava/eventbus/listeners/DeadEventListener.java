@@ -8,11 +8,9 @@ import com.google.common.eventbus.Subscribe;
  * @Date:2017/10/19
  * 532500648
  ***************************************/
-public class DeadEventListener
-{
+public class DeadEventListener {
     @Subscribe
-    public void handle(DeadEvent event)
-    {
+    public void handle(DeadEvent event) {
         System.out.println(event.getSource());
         System.out.println(event.getEvent());
     }

@@ -21,14 +21,12 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class CacheLoaderTest
-{
+public class CacheLoaderTest {
 
     private boolean isTrue = false;
 
     @Test
-    public void testBasic() throws ExecutionException, InterruptedException
-    {
+    public void testBasic() throws ExecutionException, InterruptedException {
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder().maximumSize(10)
                 .expireAfterAccess(30, TimeUnit.MILLISECONDS)
                 .build(createCacheLoader());
@@ -48,8 +46,7 @@ public class CacheLoaderTest
     }
 
     @Test
-    public void testEvictionBySize()
-    {
+    public void testEvictionBySize() {
         CacheLoader<String, Employee> cacheLoader = createCacheLoader();
         LoadingCache<String, Employee> cache = CacheBuilder.newBuilder()
                 .maximumSize(3).build(cacheLoader);
@@ -70,8 +67,7 @@ public class CacheLoaderTest
     }
 
     @Test
-    public void testEvictionByWeight()
-    {
+    public void testEvictionByWeight() {
         Weigher<String, Employee> weigher = (key, employee) ->
                 employee.getName().length() + employee.getEmpID().length() + employee.getDept().length();
 
@@ -98,32 +94,26 @@ public class CacheLoaderTest
         assertThat(cache.size(), equalTo(3L));
     }
 
-    private CacheLoader<String, Employee> createCacheLoader()
-    {
-        return new CacheLoader<String, Employee>()
-        {
+    private CacheLoader<String, Employee> createCacheLoader() {
+        return new CacheLoader<String, Employee>() {
             @Override
-            public Employee load(String key) throws Exception
-            {
+            public Employee load(String key) throws Exception {
                 return findEmployeeByName(key);
             }
         };
     }
 
 
-    private void assertLoadFromDBThenReset()
-    {
+    private void assertLoadFromDBThenReset() {
         assertThat(true, equalTo(isTrue));
         this.isTrue = false;
     }
 
-    private void assertLoadFromCache()
-    {
+    private void assertLoadFromCache() {
         assertThat(false, equalTo(isTrue));
     }
 
-    private Employee findEmployeeByName(final String name)
-    {
+    private Employee findEmployeeByName(final String name) {
         //System.out.println("The employee " + name + " is load from DB.");
         isTrue = true;
         return new Employee(name, name, name);

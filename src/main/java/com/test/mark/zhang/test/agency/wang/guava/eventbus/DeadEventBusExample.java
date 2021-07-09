@@ -8,18 +8,14 @@ import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.DeadEventLi
  * @Date:2017/10/19
  * 532500648
  ***************************************/
-public class DeadEventBusExample
-{
+public class DeadEventBusExample {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         final DeadEventListener deadEventListener = new DeadEventListener();
-        final EventBus eventBus = new EventBus("DeadEventBus")
-        {
+        final EventBus eventBus = new EventBus("DeadEventBus") {
             @Override
-            public String toString()
-            {
+            public String toString() {
                 return "DEAD-EVENT-BUS";
             }
         };

@@ -4,11 +4,9 @@ import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 
-public class ReferenceExample
-{
+public class ReferenceExample {
 
-    public static void main(String[] args) throws InterruptedException
-    {
+    public static void main(String[] args) throws InterruptedException {
         //Strong Reference
         /*int counter = 1;
 
@@ -87,38 +85,32 @@ public class ReferenceExample
          */
     }
 
-    private static class MyPhantomReference extends PhantomReference<Object>
-    {
+    private static class MyPhantomReference extends PhantomReference<Object> {
 
         private int index;
 
-        public MyPhantomReference(Object referent, ReferenceQueue<? super Object> q, int index)
-        {
+        public MyPhantomReference(Object referent, ReferenceQueue<? super Object> q, int index) {
             super(referent, q);
             this.index = index;
         }
 
-        public void doAction()
-        {
+        public void doAction() {
             System.out.println("The object " + index + " is GC.");
         }
     }
 
-    private static class Ref
-    {
+    private static class Ref {
 
         private byte[] data = new byte[1024 * 1024];
 
         private final int index;
 
-        private Ref(int index)
-        {
+        private Ref(int index) {
             this.index = index;
         }
 
         @Override
-        protected void finalize() throws Throwable
-        {
+        protected void finalize() throws Throwable {
             System.out.println("The index [" + index + "] will be GC.");
         }
     }

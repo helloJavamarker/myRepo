@@ -20,6 +20,7 @@ public class StopWatchExample {
 
     /**
      * drools
+     *
      * @param orderNo
      * @throws InterruptedException
      */
@@ -32,7 +33,7 @@ public class StopWatchExample {
         LOGGER.info("The orderNo [{}] process successful and elapsed [{}] min.", orderNo, stopwatch.stop().elapsed(TimeUnit.MINUTES));
 
         /**
-         *
+         * 使用stopwatch计算时间
          */
     }
 }

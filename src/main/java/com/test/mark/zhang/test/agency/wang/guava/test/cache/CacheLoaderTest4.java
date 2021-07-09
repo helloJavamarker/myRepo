@@ -16,20 +16,17 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class CacheLoaderTest4
-{
+public class CacheLoaderTest4 {
 
     @Test
-    public void testCacheStat()
-    {
+    public void testCacheStat() {
         CacheLoader<String, String> loader = CacheLoader.from(String::toUpperCase);
         LoadingCache<String, String> cache = CacheBuilder.newBuilder().maximumSize(5).recordStats().build(loader);
         assertCache(cache);
     }
 
     @Test
-    public void testCacheSpec()
-    {
+    public void testCacheSpec() {
         String spec = "maximumSize=5,recordStats";
         CacheBuilderSpec builderSpec = CacheBuilderSpec.parse(spec);
         CacheLoader<String, String> loader = CacheLoader.from(String::toUpperCase);
@@ -38,8 +35,7 @@ public class CacheLoaderTest4
         assertCache(cache);
     }
 
-    private void assertCache(LoadingCache<String, String> cache)
-    {
+    private void assertCache(LoadingCache<String, String> cache) {
         assertThat(cache.getUnchecked("alex"), equalTo("ALEX"));//ALEX
         CacheStats stats = cache.stats();
         System.out.println(stats.hashCode());

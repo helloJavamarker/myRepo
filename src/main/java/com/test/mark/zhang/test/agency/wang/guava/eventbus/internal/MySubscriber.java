@@ -7,8 +7,7 @@ import java.lang.reflect.Method;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public class MySubscriber
-{
+public class MySubscriber {
 
     private final Object subscribeObject;
 
@@ -16,29 +15,24 @@ public class MySubscriber
 
     private boolean disable = false;
 
-    public MySubscriber(Object subscribeObject, Method subscribeMethod)
-    {
+    public MySubscriber(Object subscribeObject, Method subscribeMethod) {
         this.subscribeObject = subscribeObject;
         this.subscribeMethod = subscribeMethod;
     }
 
-    public Object getSubscribeObject()
-    {
+    public Object getSubscribeObject() {
         return subscribeObject;
     }
 
-    public Method getSubscribeMethod()
-    {
+    public Method getSubscribeMethod() {
         return subscribeMethod;
     }
 
-    public boolean isDisable()
-    {
+    public boolean isDisable() {
         return disable;
     }
 
-    public void setDisable(boolean disable)
-    {
+    public void setDisable(boolean disable) {
         this.disable = disable;
     }
 }

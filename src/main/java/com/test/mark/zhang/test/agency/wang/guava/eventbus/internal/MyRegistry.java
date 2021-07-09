@@ -25,39 +25,33 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  *
  * </pre>
  */
-class MyRegistry
-{
+class MyRegistry {
 
     private final ConcurrentHashMap<String, ConcurrentLinkedQueue<MySubscriber>> subscriberContainer
             = new ConcurrentHashMap<>();
 
-    public void bind(Object subscriber)
-    {
+    public void bind(Object subscriber) {
         List<Method> subscribeMethods = getSubscribeMethods(subscriber);
         subscribeMethods.forEach(m -> tierSubscriber(subscriber, m));
     }
 
 
-    public void unbind(Object subscriber)
-    {
+    public void unbind(Object subscriber) {
 
         subscriberContainer.forEach((key, queue) ->
                 queue.forEach(s ->
                 {
-                    if (s.getSubscribeObject() == subscriber)
-                    {
+                    if (s.getSubscribeObject() == subscriber) {
                         s.setDisable(true);
                     }
                 }));
     }
 
-    public ConcurrentLinkedQueue<MySubscriber> scanSubscriber(final String topic)
-    {
+    public ConcurrentLinkedQueue<MySubscriber> scanSubscriber(final String topic) {
         return subscriberContainer.get(topic);
     }
 
-    private void tierSubscriber(Object subscriber, Method method)
-    {
+    private void tierSubscriber(Object subscriber, Method method) {
         final MySubscribe mySubscribe = method.getDeclaredAnnotation(MySubscribe.class);
         String topic = mySubscribe.topic();
         subscriberContainer.computeIfAbsent(topic, key -> new ConcurrentLinkedQueue<>());
@@ -65,12 +59,10 @@ class MyRegistry
 
     }
 
-    private List<Method> getSubscribeMethods(Object subscriber)
-    {
+    private List<Method> getSubscribeMethods(Object subscriber) {
         final List<Method> methods = new ArrayList<>();
         Class<?> temp = subscriber.getClass();
-        while (temp != null)
-        {
+        while (temp != null) {
             Method[] declaredMethods = temp.getDeclaredMethods();
             Arrays.stream(declaredMethods)
                     .filter(m -> m.isAnnotationPresent(MySubscribe.class) && m.getParameterCount() == 1 && m.getModifiers() == Modifier.PUBLIC)

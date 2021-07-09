@@ -8,10 +8,8 @@ import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MyEventBus;
  * @Date:2017/10/21
  * 532500648
  ***************************************/
-public class MyEventBusExample
-{
-    public static void main(String[] args)
-    {
+public class MyEventBusExample {
+    public static void main(String[] args) {
         MyEventBus myEventBus = new MyEventBus((cause, context) ->
         {
             cause.printStackTrace();

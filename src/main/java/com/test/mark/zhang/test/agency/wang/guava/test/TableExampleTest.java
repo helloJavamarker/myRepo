@@ -17,16 +17,14 @@ import static org.junit.Assert.assertThat;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class TableExampleTest
-{
+public class TableExampleTest {
     //ArrayTable
     //TreeBaseTable
     //HashBaseTable
     //ImmutableTable
 
     @Test
-    public void test()
-    {
+    public void test() {
         Table<String, String, String> table = HashBasedTable.create();
         table.put("Language", "Java", "1.8");
         table.put("Language", "Scala", "2.3");

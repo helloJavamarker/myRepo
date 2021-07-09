@@ -1,11 +1,22 @@
 package com.test.mark.zhang.test.other.project.org;
 
+import com.alibaba.fastjson.JSONObject;
+import com.mchange.v1.util.MapUtils;
+import com.test.mark.zhang.entity.Person;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.util.annotation.NonNull;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -19,6 +30,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("org")
+@Slf4j
 public class OrgController {
 
     private static List<Organization> allOrgsCache = new ArrayList<>();
@@ -95,6 +107,63 @@ public class OrgController {
     }
 
     public static void main(String[] args) {
+
+//        try {
+//            int a = 10 / 0;
+//        } catch (Exception e) {
+//            log.error("error:{}",e.getMessage(),e);
+//            log.error("......................");
+//            log.error("error:{}",e.getMessage());
+//            log.error("......................");
+//        }
+
+        List<OrgBean> list = new ArrayList<>();
+        OrgBean orgBean1 = new OrgBean("orgId1","name1","p1");
+        OrgBean orgBean2 = new OrgBean("orgId2","name2","p1");
+        OrgBean orgBean3 = new OrgBean("orgId3","name1","p1");
+        OrgBean orgBean4 = new OrgBean("orgId4","name3","p1");
+        OrgBean orgBean5 = new OrgBean("orgId1","name4","p1");
+        list.add(orgBean1);
+        list.add(orgBean2);
+        list.add(orgBean1);
+        list.add(orgBean3);
+        list.add(orgBean4);
+        list.add(orgBean5);
+
+        Map<String, List<OrgBean>> collect = list.stream().collect(Collectors.groupingBy(OrgBean::getName));
+        //System.out.println(collect);
+        Map<String, String> map = new HashMap<>();
+        map.put("key1","value1");
+        map.put("key2","value2");
+        map.put("key3","value3");
+        map.put("key1","value3");
+        System.out.println(map);
+
+
+//        Map<String, String> result = new HashMap<>();
+//        for (Map.Entry<String, String> entry : map.entrySet()) {
+//
+//        }
+
+
+        //list.stream().collect(Collectors.groupingBy(OrgBean::getName), Collectors.groupingBy())
+
+        /*JSONObject jsonObject = new JSONObject();
+        for (OrgBean orgBean : list) {
+            jsonObject.put(orgBean.getOrgId(), orgBean.getName());
+        }
+        jsonObject.put("action","enable");
+        System.out.println(jsonObject);
+        System.out.println(StringUtils.startsWith(null,"..."));
+        Map<String, String> collect = list.stream().collect(Collectors.toMap(OrgBean::getOrgId, OrgBean::getName, (o1, o2) -> o1));
+
+
+        jsonObject.put("action","enable");
+        jsonObject.put("action2",true);
+        jsonObject.put("content",collect);
+        System.out.println(jsonObject.toJSONString());
+
+
         Map<String, Organization> orgIdMapTree = generateData().stream()
                 .collect(Collectors.toMap(Organization::getOrgId, org -> org, (o1, o2) -> o1));
         orgIdMapTree.forEach((orgId, organization) -> {
@@ -115,7 +184,21 @@ public class OrgController {
             }
         });
         System.out.println(orgIdMapTree.get("200xx"));
+        test01("zhang");
+        test01(null);*/
+
     }
+    private static void test01(@NonNull String name) {
+        System.out.println(name);
+    }
+
+    @GetMapping("testList")
+    public String testList(@RequestParam("name") String name,@RequestParam("hobbys") List<String> hobbys) {
+        System.out.println(name);
+        System.out.println(hobbys);
+        return "success";
+    }
+
     @GetMapping("getAllChildren")
     public List<Organization> getAllChildren(String branchId) {
         Map<String, Organization> orgIdMapTree = allOrgsCache.stream()
@@ -172,6 +255,7 @@ public class OrgController {
         organization1.setOrgAddress("");
         organization1.setOrgArea("");
 
+        // 将二级节点
         Organization organization2 = new Organization();
         organization2.setId(200L);
         organization2.setOrgName("浙江");

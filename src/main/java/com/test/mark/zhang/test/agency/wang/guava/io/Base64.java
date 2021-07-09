@@ -2,6 +2,12 @@ package com.test.mark.zhang.test.agency.wang.guava.io;
 
 import com.google.common.base.Preconditions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
 /***************************************
  * @author:Alex Wang
  * @Date:2017/10/15
@@ -78,6 +84,7 @@ public final class Base64 {
         return resultBuilder.toString();
     }
 
+
     private static String toBase64Binary(final String source) {
         final StringBuilder binaryResult = new StringBuilder();
         for (int index = 0; index < source.length(); index++) {
@@ -96,6 +103,61 @@ public final class Base64 {
 
 
     public static void main(String[] args) {
+
+        Collection<String> c = new ArrayList<>();
+        c.add("大哥");
+        c.add("二哥");
+        c.add("三哥");
+        Iterator<String> ite = c.iterator();
+        while (ite.hasNext()) {   //一个循环里面尽量不要用多次next()方法
+            Object obj = ite.next();
+
+            System.out.println(obj);
+            ite.next();
+            ite.next();
+            ite.next();
+        }
+        System.out.println(c);
+
+        //List<String> list = Arrays.asList("zhang", "san", "li");
+        List<String> list = new ArrayList<>();
+        list.add("zhang");
+        list.add("san");
+        list.add("li");
+        list.add("si");
+//        for (String s : list) {
+//            if ("zhang".equals(s)) {
+//                list.remove(s);
+//            }
+//        }
+
+//        for (int i = 0; i < list.size(); i++) {
+//            if ("zhang".equals(list.get(i))) {
+//                list.remove(i);
+//            }
+//        }
+
+//        for (String s : list) {
+//            list.removeIf("zhang"::equals);
+//        }
+
+
+//list.removeIf("zhang"::equals);
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            if ("zhang".equals(iterator.next())) {
+                iterator.remove();
+            }
+        }
+        System.out.println(list);
+
+//        list.forEach(item -> {
+//            if ("zhang".equals(item)) {
+//                list.remove(item);
+//            }
+//        });
+
         System.out.println(encode("hello"));
         System.out.println(encode("a"));
         System.out.println(encode("12a"));

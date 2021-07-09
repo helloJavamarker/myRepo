@@ -6,11 +6,9 @@ package com.test.mark.zhang.test.agency.wang.guava.cache;
  * QQ: 532500648
  * QQ群:463962286
  ***************************************/
-public class LinkedListLRUCacheExample
-{
+public class LinkedListLRUCacheExample {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         LRUCache<String, String> cache = new LinkedListLRUCache<>(3);
         cache.put("1", "1");
         cache.put("2", "2");

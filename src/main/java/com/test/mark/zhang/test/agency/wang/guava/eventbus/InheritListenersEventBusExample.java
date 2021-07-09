@@ -8,10 +8,8 @@ import com.test.mark.zhang.test.agency.wang.guava.eventbus.listeners.ConcreteLis
  * @Date:2017/10/18
  * 532500648
  ***************************************/
-public class InheritListenersEventBusExample
-{
-    public static void main(String[] args)
-    {
+public class InheritListenersEventBusExample {
+    public static void main(String[] args) {
         final EventBus eventBus = new EventBus();
         eventBus.register(new ConcreteListener());
         System.out.println("post the string event");
