@@ -92,6 +92,7 @@ public class EventSubscribeRegisterPostProcessor implements InstantiationAwareBe
         private final String name;
         private final List<Class<?>> parameterTypes;
 
+        //私有构造
         private MethodIdentifier(Method method) {
             this.name = method.getName();
             this.parameterTypes = Arrays.asList(method.getParameterTypes());

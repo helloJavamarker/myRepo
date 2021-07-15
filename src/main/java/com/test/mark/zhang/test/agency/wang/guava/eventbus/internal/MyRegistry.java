@@ -25,6 +25,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  *
  * </pre>
  */
+//default class表示在包内可见
 class MyRegistry {
 
     private final ConcurrentHashMap<String, ConcurrentLinkedQueue<MySubscriber>> subscriberContainer

@@ -3,6 +3,7 @@ package com.test.mark.zhang.test.other.project.org;
 import com.alibaba.fastjson.JSONObject;
 import com.mchange.v1.util.MapUtils;
 import com.test.mark.zhang.entity.Person;
+import com.test.mark.zhang.test.other.project.cascade.aware.MyApplicationContextAware;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
@@ -61,6 +62,11 @@ public class OrgController {
 
     @GetMapping("get")
     public Map<String, Organization> get() {
+//        OrgBeanTestController orgBeanTestController = (OrgBeanTestController)MyApplicationContextAware.getBean("orgBeanTestController");
+//        System.out.println("aware:" + orgBeanTestController);
+        OrgBeanTestController bean = MyApplicationContextAware.getBean(OrgBeanTestController.class);
+        System.out.println("aware:" + bean);
+
         Map<String, Organization> orgIdMapTree = allOrgsCache.stream()
                 .collect(Collectors.toMap(Organization::getOrgId, org -> org, (o1, o2) -> o1));
         orgIdMapTree.forEach((orgId, organization) -> {

@@ -37,6 +37,7 @@ public class CacheLoaderTest4 {
 
     private void assertCache(LoadingCache<String, String> cache) {
         assertThat(cache.getUnchecked("alex"), equalTo("ALEX"));//ALEX
+        //得到的CacheStats是final的,不能被修改
         CacheStats stats = cache.stats();
         System.out.println(stats.hashCode());
         assertThat(stats.hitCount(), equalTo(0L));
@@ -45,7 +46,7 @@ public class CacheLoaderTest4 {
         assertThat(cache.getUnchecked("alex"), equalTo("ALEX"));
 
         stats = cache.stats();
-        System.out.println(stats.hashCode());
+        System.out.println(stats.hashCode());//两次得到的hashcode是不同的,不能直接使用上次的stats,要重新获取===对象不可变
         assertThat(stats.hitCount(), equalTo(1L));
         assertThat(stats.missCount(), equalTo(1L));
 

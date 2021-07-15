@@ -6,6 +6,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
  * @Date 2021/7/9 1:41 下午
  * @Created by mark
  */
+@Component
 public class TestBeanA implements BeanFactoryAware, BeanNameAware,
         InitializingBean, DisposableBean {
 

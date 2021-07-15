@@ -1,6 +1,5 @@
 package com.test.mark.zhang.test.agency.wang.guava.io;
 
-import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,12 +22,13 @@ public final class Base64 {
     }
 
     public static String encode(String plain) {
-        Preconditions.checkNotNull(plain);
+        //Preconditions.checkNotNull(plain);
         StringBuilder result = new StringBuilder();
         String binaryString = toBinary(plain);
 
         int delta = 6 - binaryString.length() % 6;//should append
 
+        //前面补0
         for (int i = 0; i < delta && delta != 6; i++) {
             binaryString += "0";
         }
@@ -41,6 +41,7 @@ public final class Base64 {
         }
 
         if (delta != 6) {
+            //后面补=
             for (int i = 0; i < delta / 2; i++) {
                 result.append("=");
             }

@@ -63,6 +63,7 @@ public class CacheLoaderTest {
         cache.getUnchecked("Susan");
         assertThat(cache.getIfPresent("Alex"), nullValue());
 
+        //getIfPresent方式获取数据时,如果cache没有数据,不会load
         assertThat(cache.getIfPresent("Susan"), notNullValue());
     }
 

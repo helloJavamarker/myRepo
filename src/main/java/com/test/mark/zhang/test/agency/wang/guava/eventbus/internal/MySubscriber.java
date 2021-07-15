@@ -13,6 +13,7 @@ public class MySubscriber {
 
     private final Method subscribeMethod;
 
+    //使用标志位来判断,比操作集合效率要高很多
     private boolean disable = false;
 
     public MySubscriber(Object subscribeObject, Method subscribeMethod) {

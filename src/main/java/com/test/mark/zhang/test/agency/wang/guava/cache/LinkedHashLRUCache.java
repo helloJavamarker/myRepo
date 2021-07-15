@@ -19,6 +19,8 @@ import java.util.Map;
  * @param <V>
  */
 public class LinkedHashLRUCache<K, V> implements LRUCache<K, V> {
+    //不推荐LinkedHashLRUCache直接实现LinkedHashMap,而是使用组合
+    //直接继承,会导致别的地方在用父类的使用,可以直接看到子类继承的public方法,对外暴露了
     private static class InternalLRUCache<K, V> extends LinkedHashMap<K, V> {
         final private int limit;
 
@@ -39,6 +41,7 @@ public class LinkedHashLRUCache<K, V> implements LRUCache<K, V> {
 
 
     public LinkedHashLRUCache(int limit) {
+        //推荐使用这个断言
         Preconditions.checkArgument(limit > 0, "The limit big than zero.");
         this.limit = limit;
         this.internalLRUCache = new InternalLRUCache<>(limit);

@@ -41,6 +41,8 @@ public class Employee {
 
     @Override
     protected void finalize() throws Throwable {
+        //标记的时候会调用这个方法,真正执行gc的时候并不会被调用
+        //可以在这个方法里面进行自救===还能找到roots(root根),---给一次机会  todo
         System.out.println("The name " + getName() + " will be GC.");
     }
 }

@@ -20,6 +20,7 @@ public class MyDispatcher {
 
     public static final Executor PRE_THREAD_EXECUTOR_SERVICE = PreThreadExecutorService.INSTANCE;
 
+    //私有构造
     private MyDispatcher(Executor executorService, MyEventExceptionHandler exceptionHandler) {
         this.executorService = executorService;
         this.exceptionHandler = exceptionHandler;
@@ -37,6 +38,7 @@ public class MyDispatcher {
             return;
         }
 
+        //给subscriber增加一个标志位,而不是直接操作集合
         subscribers.stream().filter(subscriber -> !subscriber.isDisable())
                 .filter(subscriber ->
                 {
