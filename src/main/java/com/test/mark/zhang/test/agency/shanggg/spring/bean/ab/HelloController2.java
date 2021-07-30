@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
  *      找到所有V1版本被调用的地方然后把相关分支删掉：这很容易在处理代码的时候删错代码从而造成生产事故
  * @Date 2021/7/13 7:49 下午
  */
-@RestController
-public class HelloController {
+@RestController("/hello/ab")
+public class HelloController2 {
 
     @Autowired
     private HelloServiceV1 helloServiceV1;
     @Autowired
     private HelloServiceV2 helloServiceV2;
 
-    @GetMapping("v1")
+    @GetMapping("/v1")
     public void sayHello(@RequestParam("helloVersion") String helloVersion){
         if(helloVersion.equals("A")){
             helloServiceV1.sayHello();
@@ -31,7 +31,7 @@ public class HelloController {
         }
     }
 
-    @GetMapping("v2")
+    @GetMapping("/v2")
     public void sayHi(@RequestParam("hiVersion") String hiVersion){
         if(hiVersion.equals("A")){
             helloServiceV1.sayHi();

@@ -13,7 +13,7 @@ import java.util.Map;
  ***************************************/
 
 /**
- * This class is not the thread-safe class.
+ * This class is not the thread-safe class.   线程不安全
  *
  * @param <K>
  * @param <V>
@@ -25,10 +25,12 @@ public class LinkedHashLRUCache<K, V> implements LRUCache<K, V> {
         final private int limit;
 
         public InternalLRUCache(int limit) {
+            //accessOrder 顺序    get后,移到最前
             super(16, 0.75f, true);
             this.limit = limit;
         }
 
+        //逐出策略
         @Override
         protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
             return size() > limit;

@@ -14,6 +14,14 @@ public class Person {
         this.hobby = hobby;
         this.IDCard = IDCard;
     }
+private String test(String name, int age, Person person) {
+        return "";
+}
+
+//public java.lang.String com.test.mark.zhang.entity.Person.test2(java.lang.String,int,com.test.mark.zhang.entity.Person)
+    public String test2(String name, int age, Person person) {
+        return "";
+    }
 
     private String name;
 

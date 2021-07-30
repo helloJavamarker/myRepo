@@ -1,7 +1,11 @@
 package com.test.mark.zhang.util.collection;
 
+import com.google.common.collect.Maps;
+import org.junit.Test;
 import org.quartz.spi.ThreadExecutor;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
@@ -31,5 +35,19 @@ public class MapTest {
 
 
         // 五: 使用collect.toMap的时候,null和重复问题
+    }
+
+    @Test
+    public void test01() {
+        Map<String, String> map = new HashMap<>();
+        map.put("zhang1","san1");
+        map.put("zhang2","san2");
+        map.put("zhang3","san3");
+        map.put("zhang4","san4");
+        map.put("zhang5","san5");
+        map.put("zhang6","san6");
+        map.put("zhang7","san7");
+        map.put("zhang8","san8");
+
     }
 }

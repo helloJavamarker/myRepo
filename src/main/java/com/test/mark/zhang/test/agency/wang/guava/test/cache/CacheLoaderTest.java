@@ -97,6 +97,7 @@ public class CacheLoaderTest {
 
     private CacheLoader<String, Employee> createCacheLoader() {
         return new CacheLoader<String, Employee>() {
+            //load定义数据来源  第一次查数据从数据库,第二次直接拿缓存---有没有调用findEmployeeByName
             @Override
             public Employee load(String key) throws Exception {
                 return findEmployeeByName(key);
@@ -114,8 +115,9 @@ public class CacheLoaderTest {
         assertThat(false, equalTo(isTrue));
     }
 
+
     private Employee findEmployeeByName(final String name) {
-        //System.out.println("The employee " + name + " is load from DB.");
+        System.out.println("The employee " + name + " is load from DB.");
         isTrue = true;
         return new Employee(name, name, name);
     }

@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContext;
 @Slf4j
 public class SpringUtils {
     private static ApplicationContext applicationContext = null;
-    public static void serApplicationContext(ApplicationContext applicationContext) {
+    public static void setApplicationContext(ApplicationContext applicationContext) {
 //        SpringUtil
         setContext(applicationContext);
     }

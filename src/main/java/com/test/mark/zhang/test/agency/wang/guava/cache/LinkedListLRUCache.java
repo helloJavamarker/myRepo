@@ -22,6 +22,7 @@ import java.util.Map;
 public class LinkedListLRUCache<K, V> implements LRUCache<K, V> {
     private final int limit;
 
+    //通过链表控制顺序
     private final LinkedList<K> keys = new LinkedList<>();
 
     private final Map<K, V> cache = new HashMap<>();

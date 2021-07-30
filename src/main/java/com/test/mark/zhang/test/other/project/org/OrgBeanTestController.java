@@ -3,6 +3,7 @@ package com.test.mark.zhang.test.other.project.org;
 
 
 import com.test.mark.zhang.test.agency.heima.disign.day2.pattern.builder.demo1.OfoBuilder;
+import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,9 +85,11 @@ public class OrgBeanTestController {
 
     private List<String> addChilds2(Organization organization) {
 
+        List<String> children = new ArrayList<>();
         while(!CollectionUtils.isEmpty(organization.getChildren())) {
             for (Organization org : organization.getChildren()) {
-                thisChildren.add(org.getOrgId());
+                //thisChildren.add(org.getOrgId());
+                children.add(org.getOrgId());
                 organization = org;  //关键是这一步
                 //thisChildren.removeAll();
                 addChilds2(organization);
@@ -94,7 +97,27 @@ public class OrgBeanTestController {
         }
 //        System.out.println("///////");
 //        System.out.println(thisChildren);
-        return thisChildren;
+        return children;
+    }
+
+    private List<String> getChildren(Organization organization) {
+        List<String> children = new ArrayList<>();
+        while(!CollectionUtils.isEmpty(organization.getChildren())) {
+            for (Organization org : organization.getChildren()) {
+                //thisChildren.add(org.getOrgId());
+                children.add(org.getOrgId());
+                organization = org;  //关键是这一步
+                //thisChildren.removeAll();
+                addChilds2(organization);
+            }
+        }
+        return children;
+    }
+
+    @Test
+    public void test02() {
+        List<OrgBean> orgBeans = generateData();
+
     }
 
     private static List<String> addChilds(Organization organization) {

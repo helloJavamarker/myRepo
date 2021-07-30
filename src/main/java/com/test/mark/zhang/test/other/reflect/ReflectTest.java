@@ -30,6 +30,10 @@ public class ReflectTest {
      */
 
     public static void main(String[] args) throws Exception {
+
+        for (Method method : Person.class.getMethods()) {
+            System.out.println(method.toGenericString());
+        }
         HashMap<String, Person> map = new HashMap<>();
         map.put("zhang",new Person());
         map.put("zhang2",new Person("zhang",23,"li",100L));

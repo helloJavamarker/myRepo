@@ -24,7 +24,7 @@ public class ReferenceExample {
 
         /**
          * detected the JVM process will be OOM then try to GC soft reference.
-         *
+         *  soft reference也可能会内存溢出,,,内存不够时先清除此类对象, 但是如果生成的快,仍然可能内存溢出
          */
 
         //soft reference

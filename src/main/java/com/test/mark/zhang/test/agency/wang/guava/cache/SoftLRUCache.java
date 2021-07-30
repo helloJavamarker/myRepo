@@ -1,8 +1,12 @@
 package com.test.mark.zhang.test.agency.wang.guava.cache;
 
+import com.test.mark.zhang.test.other.reflect.Apple;
+import org.junit.Test;
+
 import java.lang.ref.SoftReference;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 /***************************************
  * @author:Alex Wang
@@ -44,7 +48,9 @@ public class SoftLRUCache<K, V> implements LRUCache<K, V> {
     @Override
     public V get(K key) {
         SoftReference<V> reference = this.cache.get(key);
-        if (null == reference) return null;
+        if (null == reference) {
+            return null;
+        }
         return reference.get();
     }
 
