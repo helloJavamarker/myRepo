@@ -1,6 +1,7 @@
 package com.test.mark.zhang.test.other.project.security;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,8 +12,7 @@ import lombok.Setter;
  * @Date 2021/6/25 3:15 下午
  * @Created by mark
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SecurityZone {
@@ -24,5 +24,15 @@ public class SecurityZone {
     private String tag;
     private String orgIds;
     private String orgAbsolutePaths;
+    private String network;
 
+    public SecurityZone(String id, String name, String iconPath, long createTime, String tag, String orgIds, String orgAbsolutePaths) {
+        this.id = id;
+        this.name = name;
+        this.iconPath = iconPath;
+        this.createTime = createTime;
+        this.tag = tag;
+        this.orgIds = orgIds;
+        this.orgAbsolutePaths = orgAbsolutePaths;
+    }
 }

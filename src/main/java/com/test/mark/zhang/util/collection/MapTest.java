@@ -1,13 +1,16 @@
 package com.test.mark.zhang.util.collection;
 
 import com.google.common.collect.Maps;
+import com.test.mark.zhang.test.other.project.security.SecurityZone;
 import org.junit.Test;
 import org.quartz.spi.ThreadExecutor;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * @Classname MapTest
@@ -25,7 +28,7 @@ public class MapTest {
         // 三:concurrentHashMap可以保证单个步骤线程安全,但是分开不能保证
         ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
         Integer key = map.get("key");
-        map.put("key",1);
+        map.put("key", 1);
         //单步都是线程安全的,但是放到一起不是线程安全的    看业务可以使用原子类
 
         // 四: list的sublist会相互影响,map的三个方法也会相互影响
@@ -35,19 +38,42 @@ public class MapTest {
 
 
         // 五: 使用collect.toMap的时候,null和重复问题
+
+
+        Map<String, SecurityZone> securityZoneMap = generateData(10);
+        Map<String, String> idNetworkMap = securityZoneMap.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getNetwork()));
+        System.out.println("idNetworkMap = " + idNetworkMap);
+
+        securityZoneMap.forEach((id, securityZone)-> securityZone.setName("after:"));
+        System.out.println("securityZoneMap = " + securityZoneMap);
+
+    }
+
+    private static Map<String, SecurityZone> generateData(int num) {
+        Map<String, SecurityZone> map = new HashMap<>();
+        for (int i = 0; i < num; i++) {
+            SecurityZone securityZone = new SecurityZone();
+            securityZone.setId("id:" + i);
+            securityZone.setName("name:" + i);
+            securityZone.setIconPath("path:" + i);
+            securityZone.setNetwork("network:" + i);
+            map.put("id:" + i, securityZone);
+        }
+        return map;
     }
 
     @Test
     public void test01() {
         Map<String, String> map = new HashMap<>();
-        map.put("zhang1","san1");
-        map.put("zhang2","san2");
-        map.put("zhang3","san3");
-        map.put("zhang4","san4");
-        map.put("zhang5","san5");
-        map.put("zhang6","san6");
-        map.put("zhang7","san7");
-        map.put("zhang8","san8");
+        map.put("zhang1", "san1");
+        map.put("zhang2", "san2");
+        map.put("zhang3", "san3");
+        map.put("zhang4", "san4");
+        map.put("zhang5", "san5");
+        map.put("zhang6", "san6");
+        map.put("zhang7", "san7");
+        map.put("zhang8", "san8");
 
     }
 }

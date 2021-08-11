@@ -2,6 +2,7 @@ package com.test.mark.zhang.test.other.quartz;
 
 import org.springframework.context.annotation.Configuration;
 
+//@configuration和@component作为配置类的不同:https://blog.csdn.net/long476964/article/details/80626930
 @Configuration
 public class QuartzConfig {
 
