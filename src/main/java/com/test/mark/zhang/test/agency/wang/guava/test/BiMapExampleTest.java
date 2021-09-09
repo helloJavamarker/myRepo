@@ -39,6 +39,8 @@ public class BiMapExampleTest {
         biMap.put("1", "2");
         biMap.put("2", "3");
         biMap.put("3", "4");
+        biMap.put("3", "5");
+        System.out.println("biMap = " + biMap);
 
         assertThat(biMap.containsKey("1"), is(true));
         assertThat(biMap.containsKey("2"), is(true));

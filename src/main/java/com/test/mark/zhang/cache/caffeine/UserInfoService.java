@@ -1,5 +1,7 @@
 package com.test.mark.zhang.cache.caffeine;
 
+import java.util.List;
+
 public interface UserInfoService {
 
     /**

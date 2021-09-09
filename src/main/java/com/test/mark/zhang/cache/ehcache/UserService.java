@@ -16,7 +16,7 @@ public class UserService {
     //这里user没有id属性,可以制定name为key
     //@Cacheable(key = "#id")
     //这里点进去注解,其实是spring源码
-    @Cacheable(key = "#name")
+    @Cacheable(key = "#username")
     public User getUserById(Integer id, String username) {
         System.out.println("getUserById");
         return getUserFromDBById(id);

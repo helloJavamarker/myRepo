@@ -16,13 +16,13 @@ public class TestController {
     @Autowired
     private EsService esService;
 
-    @RequestMapping("findAll")
+    @RequestMapping("/findAll")
     public Iterable<TestBean> findAll() {
 
         return esService.findAll();
     }
 
-    @RequestMapping("list")
+    @RequestMapping("/list")
     public String save() {
         List<TestBean> list = null;
         esService.save(list);

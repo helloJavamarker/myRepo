@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @author mark
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD})
 public @interface RCache {
     /**
      * CacheManager的名字;在多种缓存混合使用时用到

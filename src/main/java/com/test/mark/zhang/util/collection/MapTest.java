@@ -1,10 +1,13 @@
 package com.test.mark.zhang.util.collection;
 
+import cn.hutool.core.net.Ipv4Util;
 import com.google.common.collect.Maps;
 import com.test.mark.zhang.test.other.project.security.SecurityZone;
 import org.junit.Test;
 import org.quartz.spi.ThreadExecutor;
+import sun.net.util.IPAddressUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +51,29 @@ public class MapTest {
         securityZoneMap.forEach((id, securityZone)-> securityZone.setName("after:"));
         System.out.println("securityZoneMap = " + securityZoneMap);
 
+        Map<String, String> strMap = new HashMap<>();
+        strMap.put("zhang", "san");
+        // 替换旧值
+        strMap.put("zhang", "san2");
+        //不替换旧值
+        strMap.putIfAbsent("zhang", "san2");
+//        strMap.computeIfAbsent("zhang", "san2");
+        //原来的map并没有这个default的值
+        strMap.getOrDefault("li", "liValue");
+
+        Map<String, List<String>> listMap = new HashMap<>();
+        List<String> list = listMap.get("list1");
+        if (list == null) {
+            list = new ArrayList<>();
+            listMap.put("list1", list);
+        }
+        list.add("A");
+        //这不就是之前的添加操作吗
+        //java8以后可以直接这样操作
+        listMap.computeIfAbsent("list1", k -> new ArrayList<>()).add("A");
+//        listMap.compute("list1", biFunction)
+
+
     }
 
     private static Map<String, SecurityZone> generateData(int num) {
@@ -75,5 +101,25 @@ public class MapTest {
         map.put("zhang7", "san7");
         map.put("zhang8", "san8");
 
+    }
+
+
+    @Test
+    public void bianliang() {
+        String matchStr = "zhang:";
+//        matchStr = spliceStrReturn(matchStr, " san");
+//        System.out.println(matchStr);
+        spliceStr(matchStr, " san");
+        System.out.println(matchStr);
+    }
+
+    private String spliceStrReturn(String matchStr, String str) {
+        matchStr += str;
+        return matchStr;
+    }
+
+    private void spliceStr(String matchStr, String str) {
+        matchStr = matchStr + str;
+        //matchStr += str;
     }
 }

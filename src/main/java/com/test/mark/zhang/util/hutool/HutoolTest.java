@@ -1,6 +1,8 @@
 package com.test.mark.zhang.util.hutool;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ReflectUtil;
+import com.test.mark.zhang.util.stream.collect.project.OrgBean;
 
 /**
  * @Classname HutoolTest
@@ -58,7 +60,12 @@ public class HutoolTest {
         //    DateUtil.format(Date,String):String //将返回指定格式的字符串
         //
 
+        ReflectUtil.invoke(new Object(), "getName", "AAA");
 
+    }
 
+    public static void main(String[] args) {
+        String name = "zhangsna";
+        System.out.println(name.replace("sna", "san"));
     }
 }

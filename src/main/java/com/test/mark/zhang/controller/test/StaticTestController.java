@@ -1,5 +1,6 @@
 package com.test.mark.zhang.controller.test;
 
+import com.test.mark.zhang.cache.caffeine.UserInfo;
 import com.test.mark.zhang.service.test.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,17 @@ public class StaticTestController {
   //    @Autowired
   //    private TestService testService;
   private static TestService testService;
+
+  @Autowired
+  private UserInfo userInfo;
+
+  @GetMapping("/user/test")
+  public UserInfo getUser() {
+      userInfo.setAge(23);
+      userInfo.setUserName("zhangsan");
+      userInfo.setPassWord("password");
+      return userInfo;
+  }
 
     @Autowired
     public StaticTestController(TestService testService) {

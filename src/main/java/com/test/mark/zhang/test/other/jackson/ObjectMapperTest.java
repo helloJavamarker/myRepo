@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.File;
@@ -28,6 +29,7 @@ import java.util.Map;
  * @Description TODO
  * @Date 2021/8/11 1:27 下午
  */
+@Slf4j(topic = "t11111")
 public class ObjectMapperTest {
     /**
      * Jackson ObjectMapper如何将JSON字段与Java字段匹配
@@ -48,6 +50,7 @@ public class ObjectMapperTest {
     public void test02() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         String carJson = "{ \"brand\" : \"Mercedes\", \"doors\" : 4 }";
+        log.debug("........");
         Reader reader = new StringReader(carJson);
         Car car = objectMapper.readValue(reader, Car.class);
     }
