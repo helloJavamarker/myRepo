@@ -10,6 +10,6 @@ public class TestB {
 
 
     public static void main(String[] args) {
-        System.out.println("main:" + "testB");
+        System.out.println("main:" + "testB+++++");
     }
 }
