@@ -1,0 +1,82 @@
+{
+  "menus": [
+    {
+      "code": "PortalScreen",
+      "name": "统一门户",
+      "url": "/portal",
+      "type": "page",
+      "icon": "",
+      "module": 2,
+      "operations": [
+        "Search",
+        "Edit"
+      ]
+    },{
+      "code": "Home",
+      "name": "首页",
+      "url": "/home",
+      "type": "page",
+      "icon": "ios-home-outline",
+      "module": 2,
+      "operations": [
+        "Search"
+      ]
+    },{
+      "code": "Situation",
+      "name": "态势感知",
+      "url": "/monitor",
+      "type": "page",
+      "icon": "md-desktop",
+      "module": 2,
+      "operations": [
+        "Search",
+        "Edit"
+      ],
+      "children": [
+        {
+          "code": "ExternalAttack",
+          "name": "外部攻击态势",
+          "url": "/externalAttack",
+          "type": "page",
+          "icon": "/screen/img.ExternalAttack.png",
+          "module": 2,
+          "description": "实时监控",
+          "operations": [
+            "Search"
+          ]
+        },{
+          "code": "CrossThreat",
+          "name": "横向威胁感知",
+          "url": "/crossThreat",
+          "type": "page",
+          "icon": "/screen/img.CrossThreat.png",
+          "module": 2,
+          "operations": [
+            "Search"
+          ]
+        }, {
+          "code": "OpenApi",
+          "name": "OpenApi",
+          "url": "/OpenApi",
+          "type": "page",
+          "icon": "",
+          "href": "/swagger-ui/index.html",
+          "module": 2,
+          "operations": [
+            "Search"
+          ]
+        }
+      ]
+
+    }
+  ],
+  "rolePermissionConfigs": [
+    {
+      "roleTypes": ["系统管理员","运维管理员", "总部安全管理员","总部安服人员"],
+      "exclude": ["LogsManage", "LogsManageMain", "UserManage"]
+    },{
+      "roleTypes": ["用户管理员"],
+      "exclude": ["UserManage", "Organization"]
+    }
+  ]
+}
