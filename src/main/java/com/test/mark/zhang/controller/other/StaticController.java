@@ -12,7 +12,8 @@ public class StaticController {
     @Value("${zhang}")
     private String zhang;
 
-    @Value("${zhang1}")
+    @Value("${zhang1:xxxx}")
+//    @Value("${zhang1}")
     private String zhang1;
 
     @GetMapping("/static")

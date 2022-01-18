@@ -1,8 +1,10 @@
-package com.test.mark.zhang.test.agency.shengsy.java8;
+package com.test.mark.zhang.test.agency.shengsy.java8.function;
 
 
+import com.test.mark.zhang.test.agency.shengsy.java8.Man;
 
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 
 /**
@@ -39,6 +41,11 @@ public class FunctionTest {
 
     private static int method(int a, int b, BiFunction<Integer, Integer, Integer> biFunction) {
         return biFunction.apply(a, b);
+    }
+
+    //public interface BinaryOperator<T> extends BiFunction<T,T,T>    当操作的参数返回只有一种时,可以直接用BinaryOperator
+    private int compute3(int a, int b, BinaryOperator<Integer> binaryOperator) {
+        return binaryOperator.apply(a, b);
     }
 
     private static Man superMan(Man man, Function<Man, Man> function) {
