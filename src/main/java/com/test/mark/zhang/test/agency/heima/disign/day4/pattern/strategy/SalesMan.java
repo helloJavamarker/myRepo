@@ -27,4 +27,15 @@ public class SalesMan {
     public void salesManShow() {
         strategy.show();
     }
+
+    public static void main(String[] args) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("...");
+            }
+        };
+        thread.start();
+        thread.start();
+    }
 }
