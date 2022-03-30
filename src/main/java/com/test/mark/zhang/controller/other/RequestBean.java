@@ -1,7 +1,9 @@
 package com.test.mark.zhang.controller.other;
 
 import lombok.Data;
+import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -16,4 +18,10 @@ public class RequestBean {
     private int age;
     private List<String> hobbys;
 
+    @Test
+    public void testTime() {
+        System.out.println(LocalDate.now());
+        System.out.println(LocalDate.now());
+        System.out.println(LocalDate.now());
+    }
 }

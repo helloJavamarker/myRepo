@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +105,8 @@ public class JoinerTest {
 
     @Test
     public void testJoinOnWithMap() {
+        System.out.println(Joiner.on('#').withKeyValueSeparator("=").join(stringMap));
+        System.out.println(Joiner.on('#').withKeyValueSeparator("=").join(new HashMap<>()));
         assertThat(Joiner.on('#').withKeyValueSeparator("=").join(stringMap), equalTo("Hello=Guava#Java=Scala"));
     }
 
@@ -116,5 +119,11 @@ public class JoinerTest {
         } catch (IOException e) {
             fail("append to the writer occur fetal error.");
         }
+    }
+
+    @Test
+    public void testTime() {
+        String time = "2022-02-22 22:22:22";
+        System.out.println(time.substring(0, 10));
     }
 }

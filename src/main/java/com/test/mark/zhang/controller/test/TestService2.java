@@ -1,8 +1,12 @@
 package com.test.mark.zhang.controller.test;
 
+import com.google.common.collect.Lists;
+import com.test.mark.zhang.entity.es.TestBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author by mark
