@@ -51,7 +51,5 @@ public interface CacheManagerAssembler {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(CacheClass.valueOf("LRUMapCache"));
-    }
+
 }

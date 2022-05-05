@@ -1,5 +1,7 @@
 package com.test.mark.zhang.test.agency.shanggg.java8.day2.java8;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.DoubleSummaryStatistics;
 import java.util.HashSet;
@@ -129,7 +131,8 @@ public class TestStreamAPI3 {
 	}
 	
 	//多级分组
-	public static void test6(){
+    @Test
+	public void test6(){
 		Map<Employee.Status, Map<String, List<Employee>>> map = emps.stream()
 			.collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy((e) -> {
 				if(e.getAge() >= 60) {

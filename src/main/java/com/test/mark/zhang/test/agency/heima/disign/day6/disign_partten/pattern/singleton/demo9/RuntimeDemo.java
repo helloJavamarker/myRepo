@@ -18,6 +18,7 @@ public class RuntimeDemo {
         Process process = runtime.exec("ipconfig");
         //调用process对象的获取输入流的方法
         InputStream is = process.getInputStream();
+
         byte[] arr = new byte[1024 * 1024 * 100];
         //读取数据
         int len = is.read(arr);//返回读到的字节的个数

@@ -1,5 +1,6 @@
 package com.example.security.conf;
 
+import cn.hutool.core.util.NumberUtil;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -46,6 +47,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return null;
     }
+
+    public static void main(String[] args) {
+//        String num = "57694678028910X";
+        String num = "354420668";
+//        String num = "168314752";
+//        String num2 = "1.342445333332222";
+        System.out.println(Double.parseDouble(num));
+        System.out.println((Double.parseDouble(num) / 1024));
+        System.out.println((Double.parseDouble(num) / 1024 / 1024));
+        System.out.println((Double.parseDouble(num) / 1024 /1024 /1024));
+        System.out.println(NumberUtil.div(Double.parseDouble(num), 1024  * 1024  * 1024, 2));
+//        System.out.println(Double.parseDouble(num2));
+    }
+
 
 
 }

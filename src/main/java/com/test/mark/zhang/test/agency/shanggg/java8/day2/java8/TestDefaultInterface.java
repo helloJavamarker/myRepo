@@ -6,7 +6,7 @@ public class TestDefaultInterface {
 		SubClass sc = new SubClass();
 		System.out.println(sc.getName());
 		
-		MyInterface.show();
+//		MyInterface.show();
 	}
 
 }

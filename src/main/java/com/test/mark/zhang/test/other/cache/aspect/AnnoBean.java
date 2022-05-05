@@ -49,6 +49,7 @@ public class AnnoBean implements Cloneable {
         return cacheType == CacheType.REMOTE;
     }
 
+
     public static AnnoBean toAnnoBean(Annotation cacheAnno, final AnnoBean xAnnoBean) {
         AnnoBean ab = null;
         try {
