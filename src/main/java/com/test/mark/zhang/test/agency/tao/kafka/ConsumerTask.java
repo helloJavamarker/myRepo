@@ -6,6 +6,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -27,10 +28,10 @@ public class ConsumerTask implements Runnable {
     @Override
     public void run() {
         // 构造consumer实例
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
         // 订阅主题
-        consumer.subscribe(Arrays.asList("tpc_1"));
+        consumer.subscribe(Collections.singletonList("tpc_1"));
 
 
         // 拉取消息

@@ -1,5 +1,7 @@
 package com.test.mark.zhang.test.agency.heima.disign.day1.singleton.demo9;
 
+import cn.hutool.core.util.RuntimeUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -23,5 +25,8 @@ public class RuntimeDemo {
         int len = is.read(arr);//返回读到的字节的个数
         //将字节数组转换为字符串输出到控制台
         System.out.println(new String(arr,0,len,"GBK"));
+
+        String str = RuntimeUtil.execForStr("ipconfig");
+        //执行这个命令后，在Windows下可以获取网卡信息。
     }
 }
