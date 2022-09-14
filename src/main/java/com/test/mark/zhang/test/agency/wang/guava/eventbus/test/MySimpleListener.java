@@ -1,6 +1,7 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus.test;
 
 
+import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MsgType;
 import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MySubscribe;
 
 /***************************************
@@ -15,8 +16,9 @@ public class MySimpleListener {
         System.out.println("MySimpleListener===test1==" + x);
     }
 
-    @MySubscribe(topic = "alex-topic")
-    public void test2(Integer x) {
+    @MySubscribe(topic = "alex-topic", msgType = MsgType.MSG)
+    public void test2(Integer x) throws InterruptedException {
+        Thread.sleep(10);
         System.out.println("MySimpleListener===test2==" + x);
     }
 }

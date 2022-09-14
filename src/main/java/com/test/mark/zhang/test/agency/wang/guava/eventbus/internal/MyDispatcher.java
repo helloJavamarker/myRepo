@@ -31,6 +31,7 @@ public class MyDispatcher {
         ConcurrentLinkedQueue<MySubscriber> subscribers = registry.scanSubscriber(topic);
         if (null == subscribers) {
             if (exceptionHandler != null) {
+                System.out.println("has error");
                 exceptionHandler.handle(new IllegalArgumentException("The topic " + topic + " not bind yet"),
                         new BaseMyEventContext(bus.getBusName(), null, event));
             }
@@ -43,6 +44,7 @@ public class MyDispatcher {
                 .filter(subscriber ->
                 {
                     Method subscribeMethod = subscriber.getSubscribeMethod();
+                    System.out.println(subscribeMethod.getParameterCount());
                     Class<?> aClass = subscribeMethod.getParameterTypes()[0];
                     return (aClass.isAssignableFrom(event.getClass()));
                 }).forEach(subscriber -> realInvokeSubscribe(subscriber, event, bus));

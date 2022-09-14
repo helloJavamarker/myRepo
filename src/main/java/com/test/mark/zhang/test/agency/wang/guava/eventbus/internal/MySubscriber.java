@@ -1,5 +1,6 @@
 package com.test.mark.zhang.test.agency.wang.guava.eventbus.internal;
 
+
 import java.lang.reflect.Method;
 
 /***************************************
@@ -14,7 +15,7 @@ public class MySubscriber {
     private final Method subscribeMethod;
 
     //使用标志位来判断,比操作集合效率要高很多
-    private boolean disable = false;
+    private volatile boolean disable = false;
 
     public MySubscriber(Object subscribeObject, Method subscribeMethod) {
         this.subscribeObject = subscribeObject;

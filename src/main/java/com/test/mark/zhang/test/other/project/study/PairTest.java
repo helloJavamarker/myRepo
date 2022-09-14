@@ -1,5 +1,6 @@
 package com.test.mark.zhang.test.other.project.study;
 
+import cn.hutool.core.util.NumberUtil;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.apache.commons.lang3.tuple.Triple;
 import org.apache.commons.lang3.tuple.Pair;
@@ -8,7 +9,7 @@ import org.apache.commons.lang3.tuple.Pair;
  * @author by mark
  * @Classname PairTest
  * @Description TODO
- * @Date 2022/4/27 10:28 上午
+ * @Date 2022/4/27 10:28 上午 关联
  */
 public class PairTest {
     public static void main(String[] args) {
@@ -23,6 +24,10 @@ public class PairTest {
         System.out.println(triple.getMiddle());
         System.out.println(triple.getRight());
         System.out.println(triple);
+        Triple<String, String, Integer> of = Triple.of("li", "si", 23);
+        
+
+        System.out.println(NumberUtil.div("100", "3", 0));
 
         String result = "{" +"left"+ ":" + "right"+"}";
         //格式友好,是json格式

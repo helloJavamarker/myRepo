@@ -14,4 +14,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface MySubscribe {
     String topic() default "default-topic";
+
+    MsgType msgType() default MsgType.MSG;
+
+    int retry() default 0;
+
+    int delay() default 60;
 }

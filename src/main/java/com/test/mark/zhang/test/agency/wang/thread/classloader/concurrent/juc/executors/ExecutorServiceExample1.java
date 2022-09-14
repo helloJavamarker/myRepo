@@ -1,5 +1,8 @@
 package com.test.mark.zhang.test.agency.wang.thread.classloader.concurrent.juc.executors;
 
+import org.junit.Test;
+
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -26,6 +29,27 @@ public class ExecutorServiceExample1 {
         executeRunnableTask();
     }
 
+    @Test
+    public void testThreadPool() {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 1, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1));
+//        threadPoolExecutor.submit(() -> {
+//            System.out.println("........");
+//            String a = null;
+//            a.equals("z");
+////            "z".equals(a);   submit 出异常会偷偷处理,下面代码不会再执行
+//            System.out.println("...");
+//        });
+        threadPoolExecutor.execute(() -> {
+            System.out.println("........");
+            String a = null;
+            a.equals("z");
+//            "z".equals(a);   submit 出异常会偷偷处理,下面代码不会再执行
+            System.out.println("...");
+        });
+        //1、submit在执行过程中与execute不一样，不会抛出异常而是把异常保存在成员变量中，在FutureTask.get阻塞获取的时候再把异常抛出来。
+        //2、Spring的@Schedule注解的内部实现就是使用submit，因此，如果你构建的任务内部有未检查异常，你是永远也拿不到这个异常的。
+        //3、execute直接抛出异常之后线程就死掉了，submit保存异常线程没有死掉，因此execute的线程池可能会出现没有意义的情况，因为线程没有得到重用。而submit不会出现这种情况。
+    }
 
     /**
      * Question:

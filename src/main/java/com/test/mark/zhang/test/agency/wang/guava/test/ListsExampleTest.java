@@ -61,6 +61,7 @@ public class ListsExampleTest {
 
         List<String> result = Lists.reverse(list);
         assertThat(Joiner.on(",").join(result), equalTo("3,2,1"));
+
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.example.security.service.impl;
 
 import com.example.security.entity.Role;
+import com.example.security.entity.User;
 import com.example.security.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,10 @@ public class UserServiceImpl implements UserService {
     public Role getOneByName(String name) {
         //get from db
         return null;
+    }
+
+    @Override
+    public User login(String loginIp, String username) {
+        return new User();
     }
 }

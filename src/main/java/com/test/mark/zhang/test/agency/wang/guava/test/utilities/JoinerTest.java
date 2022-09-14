@@ -1,7 +1,6 @@
 package com.test.mark.zhang.test.agency.wang.guava.test.utilities;
 
 import com.google.common.base.Joiner;
-import com.google.common.io.Files;
 import org.junit.Test;
 
 import java.io.File;
@@ -40,6 +39,15 @@ public class JoinerTest {
 
     private final String targetFileName = "G:\\Teaching\\汪文君Google Guava实战视频\\guava-joiner.txt";
     private final String targetFileNameToMap = "G:\\Teaching\\汪文君Google Guava实战视频\\guava-joiner-map.txt";
+
+    @Test
+    public void testJoin() {
+        System.out.println(Joiner.on(",").join(stringList));
+        System.out.println(Joiner.on("','").join(stringList));
+        System.out.println("('"+ Joiner.on("','").join(stringList) + "')");
+        System.out.println("(" + stringList.stream().map(str -> "'" + str + "'").collect(joining(",")) + ")");
+        System.out.println(Joiner.on(',').join(stringList));
+    }
 
     @Test
     public void testJoinOnJoin() {

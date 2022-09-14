@@ -4,8 +4,6 @@ import com.google.common.eventbus.Subscribe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
-
 /***************************************
  * @author:Alex Wang
  * @Date:2017/10/18
@@ -14,46 +12,47 @@ import java.util.concurrent.TimeUnit;
 public class SimpleListener {
     private final static Logger LOGGER = LoggerFactory.getLogger(SimpleListener.class);
 
-    @Subscribe
-    public void doAction(final String event) {
-        if (LOGGER.isInfoEnabled()) {
-            LOGGER.info("Received event [{}] and will take a action", event);
-        }
-    }
+//    @Subscribe
+//    public void doAction(final String event) {
+//        if (LOGGER.isInfoEnabled()) {
+//            LOGGER.info("Received event [{}] and will take a action", event);
+//        }
+//    }
+
+//    @Subscribe
+//    public void doAction1(final String event) {
+//        if (LOGGER.isInfoEnabled()) {
+//            LOGGER.info("Received event [{}] and will take a action3", event);
+//        }
+//    }
+
+//    @Subscribe
+//    public void doAction2(final String event) {
+//
+//        try {
+//            TimeUnit.MINUTES.sleep(1);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        if (LOGGER.isInfoEnabled()) {
+//            LOGGER.info("Received event [{}] and will take a action2", event);
+//        }
+//    }
 
     @Subscribe
-    public void doAction1(final String event) {
+    public void doAction3(final String event) throws InterruptedException {
         if (LOGGER.isInfoEnabled()) {
-            LOGGER.info("Received event [{}] and will take a action3", event);
-        }
-    }
-
-    @Subscribe
-    public void doAction2(final String event) {
-
-        try {
-            TimeUnit.MINUTES.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (LOGGER.isInfoEnabled()) {
-            LOGGER.info("Received event [{}] and will take a action2", event);
-        }
-    }
-
-    @Subscribe
-    public void doAction3(final String event) {
-        if (LOGGER.isInfoEnabled()) {
+            Thread.sleep(5000);
             LOGGER.info("Received event [{}] and will take a action1", event);
         }
     }
 
-    @Subscribe
-    public void doAction4(final String event) {
-        if (LOGGER.isInfoEnabled()) {
-            LOGGER.info("Received event [{}] and will take a action4", event);
-        }
-    }
+//    @Subscribe
+//    public void doAction4(final String event) {
+//        if (LOGGER.isInfoEnabled()) {
+//            LOGGER.info("Received event [{}] and will take a action4", event);
+//        }
+//    }
 
     /**
      * 我们考虑下面几段代码：

@@ -11,13 +11,12 @@ import cn.hutool.core.date.Month;
 import cn.hutool.core.lang.Console;
 import org.junit.Test;
 
-import javax.jws.Oneway;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author by mark
@@ -90,6 +89,7 @@ public class TimeTest {
         String formatBetween = DateUtil.formatBetween(DateUtil.between(date1, date2, DateUnit.MS), BetweenFormatter.Level.MINUTE);
         //输出：31天1小时
         Console.log(formatBetween);
+        System.out.println(LocalDateTimeUtil.between(LocalDateTime.now(), LocalDateTime.of(2022, 6, 29, 12, 30, 0), ChronoUnit.HOURS));
 
         // "摩羯座"
         String zodiac = DateUtil.getZodiac(Month.JANUARY.getValue(), 19);
@@ -112,7 +112,7 @@ public class TimeTest {
     @Test
     public void chineseDate() {
         //通过农历构建
-        ChineseDate chineseDate = new ChineseDate(1992,12,14);
+        ChineseDate chineseDate = new ChineseDate(1992, 12, 14);
 
         //通过公历构建
         ChineseDate chineseDate2 = new ChineseDate(DateUtil.parseDate("1993-01-06"));
@@ -148,14 +148,93 @@ public class TimeTest {
         of = LocalDateTimeUtil.ofUTC(dt.getTime());
 
         LocalDateTime start = LocalDateTimeUtil.parse("2019-02-02T00:00:00");
-        LocalDateTime end = LocalDateTimeUtil.parse("2020-02-02T00:00:00");
+        LocalDateTime end = LocalDateTimeUtil.parse("2018-02-02T00:00:00");
 
         Duration between = LocalDateTimeUtil.between(start, end);
 
         // 365
-        between.toDays();
+        System.out.println(between.toDays());
     }
 
+
+    @Test
+    public void testPrint() throws InterruptedException {
+        LocalDateTime now = LocalDateTime.now();
+        final Date date = new Date();
+
+        TimeUnit.SECONDS.sleep(100);
+        LocalDateTime now1 = LocalDateTime.now();
+        final Date date1 = new Date();
+        System.out.println(LocalDateTimeUtil.between(now, now1));
+        System.out.println(LocalDateTimeUtil.between(now, now1, ChronoUnit.MILLIS));
+        System.out.println(DateUtil.formatBetween(date, date1, BetweenFormatter.Level.MILLISECOND));
+
+    }
+
+    @Test
+    public void testEqual() {
+        short a = 20000;
+        Short b = 20000;
+        System.out.println("equals:" + (b.equals(a)));
+        System.out.println("==:" + (b == a));
+
+
+    }
+
+
+    public static void main(String[] args) {
+        Integer a = new Integer(200);
+        Integer b = new Integer(200);
+        Integer c = 200;
+        Integer e = 200;
+        int d = 200;
+
+        System.out.println("两个new出来的对象    ==判断" + (a == b));
+        System.out.println("两个new出来的对象    equal判断" + a.equals(b));
+        System.out.println("new出的对象和用int赋值的Integer   ==判断" + (a == c));
+        System.out.println("new出的对象和用int赋值的Integer   equal判断" + (a.equals(c)));
+        System.out.println("两个用int赋值的Integer    ==判断" + (c == e));
+        System.out.println("两个用int赋值的Integer    equal判断" + (c.equals(e)));
+        System.out.println("基本类型和new出的对象   ==判断" + (d == a));
+        System.out.println("基本类型和new出的对象   equal判断" + (a.equals(d)));
+        System.out.println("基本类型和自动装箱的对象   ==判断" + (d == c));
+        System.out.println("基本类型和自动装箱的对象   equal判断" + (c.equals(d)));
+
+
+        //https://www.jianshu.com/p/9cb9c61b0986
+
+        //常量池。当你定义的Integer在-128~127之间时，Integer的 == 和equal() 返回是一样的，但当Integer 在那个范围之外时，equal 比较的是值，两值相等就返回true，
+        // == 就不一样了，比较的是地址，即便你定义的两个 Integer 的值是一样的， == 返回的也还是false。 你可以看下Integer 类的源码，有个内部静态类 IntegerCache
+
+    }
+
+    @Test
+    public void testEq() {
+        Integer a = new Integer(5);
+        Integer b = new Integer(5);
+        Integer c = 127;
+        Integer d = 127;
+        Integer e = 129;
+        Integer f = 129;
+        int g = 128;
+        System.out.println(a == b);       //false，2个不同的Integer对象，“==”会校验Integer地址是否相同
+        System.out.println(a.equals(b));   //true，只是校验Integer值是否相同
+        System.out.println(c == d);    //true
+        System.out.println(e == f);    //false，Integer值不在-128到127之间，会new一个新对象
+        System.out.println(f == g);    //true
+    }
+
+    @Test
+    public void testThread() {
+        Short a = new Short("3");
+        short b =3;
+        System.out.println("main:" + a.equals(b));
+        new Thread(()-> {
+            System.out.println("thread1:"  + a.equals(b));
+            System.out.println("....");
+        }).start();
+        System.out.println("end");
+    }
 
 
 }

@@ -2,9 +2,10 @@ package com.test.mark.zhang.test.agency.shanggg.java8.day2.java8;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 
 public class TestStreamAPI3 {
-	
+
 	static List<Employee> emps = Arrays.asList(
 			new Employee(102, "李四", 79, 6666.66, Employee.Status.BUSY),
 			new Employee(101, "张三", 18, 9999.99, Employee.Status.FREE),
@@ -24,7 +25,7 @@ public class TestStreamAPI3 {
 			new Employee(104, "赵六", 8, 7777.77, Employee.Status.FREE),
 			new Employee(105, "田七", 38, 5555.55, Employee.Status.BUSY)
 	);
-	
+
 	//3. 终止操作
 	/*
 		归约
@@ -32,21 +33,21 @@ public class TestStreamAPI3 {
 	 */
 	public static void test1(){
 		List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
-		
+
 		Integer sum = list.stream()
 			.reduce(0, (x, y) -> x + y);
-		
+
 		System.out.println(sum);
-		
+
 		System.out.println("----------------------------------------");
-		
+
 		Optional<Double> op = emps.stream()
 			.map(Employee::getSalary)
 			.reduce(Double::sum);
-		
+
 		System.out.println(op.get());
 	}
-	
+
 	//需求：搜索名字中 “六” 出现的次数
 	public static void test2(){
 		Optional<Integer> sum = emps.stream()
@@ -59,78 +60,78 @@ public class TestStreamAPI3 {
                     return 0;
                 }
 			}).reduce(Integer::sum);
-		
+
 		System.out.println(sum.get());
 	}
-	
+
 	//collect——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法
 	public static void test3(){
 		List<String> list = emps.stream()
 			.map(Employee::getName)
 			.collect(Collectors.toList());
-		
+
 		list.forEach(System.out::println);
-		
+
 		System.out.println("----------------------------------");
-		
+
 		Set<String> set = emps.stream()
 			.map(Employee::getName)
 			.collect(Collectors.toSet());
-		
+
 		set.forEach(System.out::println);
 
 		System.out.println("----------------------------------");
-		
+
 		HashSet<String> hs = emps.stream()
 			.map(Employee::getName)
 			.collect(Collectors.toCollection(HashSet::new));
-		
+
 		hs.forEach(System.out::println);
 	}
-	
+
 	public static void test4(){
 		Optional<Double> max = emps.stream()
 			.map(Employee::getSalary)
 			.collect(Collectors.maxBy(Double::compare));
-		
+
 		System.out.println(max.get());
-		
+
 		Optional<Employee> op = emps.stream()
 			.collect(Collectors.minBy((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())));
-		
+
 		System.out.println(op.get());
-		
+
 		Double sum = emps.stream()
 			.collect(Collectors.summingDouble(Employee::getSalary));
-		
+
 		System.out.println(sum);
-		
+
 		Double avg = emps.stream()
 			.collect(Collectors.averagingDouble(Employee::getSalary));
-		
+
 		System.out.println(avg);
-		
+
 		Long count = emps.stream()
 			.collect(Collectors.counting());
-		
+
 		System.out.println(count);
-		
+
 		System.out.println("--------------------------------------------");
-		
+
 		DoubleSummaryStatistics dss = emps.stream()
 			.collect(Collectors.summarizingDouble(Employee::getSalary));
-		
+
 		System.out.println(dss.getMax());
 	}
-	
+
 	//分组
 	public static void test5(){
 		Map<Employee.Status, List<Employee>> map = emps.stream()
 			.collect(Collectors.groupingBy(Employee::getStatus));
-		
+
 		System.out.println(map);
 	}
-	
+
 	//多级分组
     @Test
 	public void test6(){
@@ -144,32 +145,76 @@ public class TestStreamAPI3 {
                     return "成年";
                 }
 			})));
-		
+
 		System.out.println(map);
 	}
-	
+
 	//分区
 	public static void test7(){
 		Map<Boolean, List<Employee>> map = emps.stream()
 			.collect(Collectors.partitioningBy((e) -> e.getSalary() >= 5000));
-		
+
 		System.out.println(map);
 	}
-	
+
 	//
 	public static void test8(){
 		String str = emps.stream()
 			.map(Employee::getName)
 			.collect(Collectors.joining("," , "----", "----"));
-		
+
 		System.out.println(str);
 	}
-	
+
+    @Test
+    public void test01() {
+	    Integer a = 5;
+        for (int i = 0; i < 3; i++) {
+            test02(a);
+        }
+        System.out.println(a);
+    }
+
+    private void test02(Integer a) {
+	    a = a + 1;
+        System.out.println(a);
+    }
+
+
 	public static void test9(){
 		Optional<Double> sum = emps.stream()
 			.map(Employee::getSalary)
 			.collect(Collectors.reducing(Double::sum));
-		
+
 		System.out.println(sum.get());
+
+
+
 	}
+
+    public static void main(String[] args) {
+        double a = 2.3;
+        int b = 1;
+        System.out.println(Double.doubleToLongBits(a));
+//        System.out.println(Double.(a));
+        System.out.println((int)Math.round(a));
+        System.out.println(Math.round(a));
+
+        List<String> es = Arrays.asList("2022-08-23 14:00:00", "2022-08-24 15:00:00", "2022-08-25 16:00:00");
+        es.stream().map(e -> e.substring(5, 10)).forEach(System.out::println);
+
+        Map<String, String> map = new HashMap<>();
+        System.out.println(map.get("c"));
+        System.out.println(map.getOrDefault("a", "b"));
+
+        List<String> list = new ArrayList<>();
+        list.add("zahng");
+        list.add("zhang");
+        list.add("san");
+        list.add("san1");
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, list.get(i)+"==");
+        }
+        System.out.println(list);
+    }
 }

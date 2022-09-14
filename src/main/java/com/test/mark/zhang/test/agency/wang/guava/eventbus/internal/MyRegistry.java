@@ -28,6 +28,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 //default class表示在包内可见
 class MyRegistry {
 
+    // 这个容器存的是啥   key是topic??
     private final ConcurrentHashMap<String, ConcurrentLinkedQueue<MySubscriber>> subscriberContainer
             = new ConcurrentHashMap<>();
 
@@ -40,8 +41,7 @@ class MyRegistry {
     public void unbind(Object subscriber) {
 
         subscriberContainer.forEach((key, queue) ->
-                queue.forEach(s ->
-                {
+                queue.forEach(s -> {
                     if (s.getSubscribeObject() == subscriber) {
                         s.setDisable(true);
                     }
@@ -56,12 +56,16 @@ class MyRegistry {
         final MySubscribe mySubscribe = method.getDeclaredAnnotation(MySubscribe.class);
         String topic = mySubscribe.topic();
         subscriberContainer.computeIfAbsent(topic, key -> new ConcurrentLinkedQueue<>());
+        // 某个对象的某个方法
         subscriberContainer.get(topic).add(new MySubscriber(subscriber, method));
 
     }
 
+    //subscriber ??
     private List<Method> getSubscribeMethods(Object subscriber) {
         final List<Method> methods = new ArrayList<>();
+
+        //??
         Class<?> temp = subscriber.getClass();
         while (temp != null) {
             Method[] declaredMethods = temp.getDeclaredMethods();

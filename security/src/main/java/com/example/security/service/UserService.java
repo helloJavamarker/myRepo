@@ -1,6 +1,7 @@
 package com.example.security.service;
 
 import com.example.security.entity.Role;
+import com.example.security.entity.User;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface UserService {
     List<Role> loadRole();
 
     Role getOneByName(String name);
+
+    User login(String loginIp, String username);
 }

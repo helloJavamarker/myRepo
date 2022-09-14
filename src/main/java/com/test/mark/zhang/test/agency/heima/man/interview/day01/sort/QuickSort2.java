@@ -1,5 +1,8 @@
 package com.test.mark.zhang.test.agency.heima.man.interview.day01.sort;
 
+import org.apache.log4j.helpers.LogLog;
+import org.junit.Test;
+
 import java.util.Arrays;
 
 import static com.test.mark.zhang.test.agency.heima.man.interview.day01.sort.Utils.swap;
@@ -14,6 +17,11 @@ public class QuickSort2 {
         quick(a, 0, a.length - 1);
     }
 
+    @Test
+    public void testLogLog() {
+        LogLog.error("error");
+        LogLog.debug("error");
+    }
     private static void quick(int[] a, int l, int h) {
         if (l >= h) {
             return;

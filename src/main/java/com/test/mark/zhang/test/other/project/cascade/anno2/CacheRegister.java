@@ -1,8 +1,5 @@
 package com.test.mark.zhang.test.other.project.cascade.anno2;
 
-import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MySubscribe;
-import com.test.mark.zhang.test.agency.wang.guava.eventbus.internal.MySubscriber;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -10,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author by mark
@@ -30,7 +26,7 @@ public class CacheRegister {
         final Cacheable mySubscribe = method.getDeclaredAnnotation(Cacheable.class);
         String cacheKey = mySubscribe.value();
         CACHE_MAP.computeIfAbsent(cacheKey, key -> new ArrayList<>());
-        CACHE_MAP.get(cacheKey).add(new MySubscriber(subscriber, method));
+//        CACHE_MAP.get(cacheKey).add(new MySubscriber(subscriber, method));
 
     }
 

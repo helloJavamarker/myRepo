@@ -1,5 +1,9 @@
 package com.example.security.conf;
 
+import cn.hutool.extra.spring.SpringUtil;
+import com.example.security.controller.LoginController;
+import com.example.security.filter.CasFilter;
+import com.example.security.service.UserService;
 import com.example.security.util.AttrRequestMatcher;
 import com.example.security.util.NillAuth;
 import com.example.security.voter.AllowHostVoter;
@@ -13,11 +17,11 @@ import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -84,6 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         for (int i = 0; i < filterIgnore.length; i++) {
             filterIgnore[i] = "/**/*" + filterIgnore[i];
         }
+        // 这里匹配的路径不过滤
         web.ignoring().regexMatchers()
                 .antMatchers(filterIgnore)
                 .antMatchers("/", "/static/**", "error", "/aicso/login");
@@ -117,12 +122,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .accessDecisionManager(accessDecissionManager())
                 .requestMatchers(whitePermissions()).permitAll();
+        LoginController loginController = SpringUtil.getBean("loginController", LoginController.class);
+        UserService userService = SpringUtil.getBean("userService", UserService.class);
+        CasFilter casFilter = new CasFilter(loginController, userService);
+        http.addFilterBefore(casFilter, ExceptionTranslationFilter.class);
 
     }
 
     /**
      * 鉴权投票器
-     * @see AndVoter :同时满足method,referer,host和自带投票器才通过
+//     * @see AndVoter :同时满足method,referer,host和自带投票器才通过
      * @see AllowHostVoter:
      * @see AllowRefererVoter 请求referer不在trustReferer中,直接拒绝
      * @see AllowMethodVoter 限制http方法,过滤不安全的method
